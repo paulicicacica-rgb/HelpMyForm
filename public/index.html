@@ -405,7 +405,16 @@
 
 <div class="toast" id="toast"></div>
 
-<!-- FLOATING CHAT BUBBLE -->
+<!-- CUSTOM MODAL -->
+<div id="customModal" style="display:none;position:fixed;inset:0;z-index:200;align-items:flex-end;justify-content:center;background:rgba(0,0,0,0.4);backdrop-filter:blur(2px)">
+  <div style="background:#fff;border-radius:24px 24px 0 0;padding:28px 24px 44px;width:100%;max-width:480px">
+    <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:500;color:var(--ink);margin-bottom:8px" id="modalTitle"></div>
+    <div style="font-size:14px;color:var(--ink2);margin-bottom:20px" id="modalSubtitle"></div>
+    <input type="text" id="modalInput" style="width:100%;padding:14px 16px;background:var(--surface);border:1.5px solid var(--border);border-radius:14px;color:var(--ink);font-family:'Instrument Sans',sans-serif;font-size:15px;outline:none;margin-bottom:16px" placeholder="">
+    <button onclick="modalConfirm()" style="width:100%;padding:15px;background:var(--accent);border:none;border-radius:14px;color:#fff;font-family:'Instrument Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:10px">Confirm</button>
+    <button onclick="modalCancel()" style="width:100%;padding:15px;background:var(--surface);border:1.5px solid var(--border);border-radius:14px;color:var(--ink2);font-family:'Instrument Sans',sans-serif;font-size:15px;cursor:pointer">Cancel</button>
+  </div>
+</div>
 <button class="chat-bubble-btn" id="chatBubbleBtn" onclick="toggleChat()">
   💬
   <div class="chat-unread" id="chatUnread"></div>
@@ -859,8 +868,32 @@ function showWizardStep(step) {
 
 function wizardConfirmYes() { showWizardStep(1); }
 function wizardConfirmNo() {
-  const input = prompt('What form is this? Type the name:');
-  if (input && input.trim().length >= 2) { wizardData.formName = input.trim(); showWizardStep(1); }
+  showModal(
+    'We can\'t tell from the photo',
+    'Please tell us what this form is about',
+    'e.g. HAP, Medical Card, PPS...',
+    (val) => { if (val && val.trim().length >= 2) { wizardData.formName = val.trim(); showWizardStep(1); } }
+  );
+}
+
+let modalCallback = null;
+function showModal(title, subtitle, placeholder, callback) {
+  modalCallback = callback;
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalSubtitle').textContent = subtitle;
+  document.getElementById('modalInput').placeholder = placeholder;
+  document.getElementById('modalInput').value = '';
+  const m = document.getElementById('customModal');
+  m.style.display = 'flex';
+  setTimeout(() => document.getElementById('modalInput').focus(), 100);
+}
+function modalConfirm() {
+  const val = document.getElementById('modalInput').value.trim();
+  document.getElementById('customModal').style.display = 'none';
+  if (modalCallback) modalCallback(val);
+}
+function modalCancel() {
+  document.getElementById('customModal').style.display = 'none';
 }
 
 function renderChatBox() {
