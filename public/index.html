@@ -718,7 +718,7 @@ async function analyzeForm() {
   if (checkPaywall()) { goToPaywall(); return; }
   const langName = getSelectedLanguage();
   try {
-    document.getElementById('loading-text').textContent = 'Having a look, be patient...';
+    document.getElementById('loading-text').textContent = 'Reading it now...';
     const res = await fetch('/api/analyze', {
       method: 'POST', headers: {'Content-Type':'application/json'},
       body: JSON.stringify({ imageBase64: currentImageBase64, imageMime: currentImageMime, language: langName })
