@@ -258,7 +258,7 @@
   /* CHAT BUBBLE */
   .chat-bubble-btn {
     position: fixed;
-    bottom: 100px;
+    bottom: 160px;
     right: 20px;
     width: 52px; height: 52px;
     background: var(--accent);
@@ -718,7 +718,7 @@ async function analyzeForm() {
   if (checkPaywall()) { goToPaywall(); return; }
   const langName = getSelectedLanguage();
   try {
-    document.getElementById('loading-text').textContent = 'Analysing with AI...';
+    document.getElementById('loading-text').textContent = 'Having a look, be patient...';
     const res = await fetch('/api/analyze', {
       method: 'POST', headers: {'Content-Type':'application/json'},
       body: JSON.stringify({ imageBase64: currentImageBase64, imageMime: currentImageMime, language: langName })
