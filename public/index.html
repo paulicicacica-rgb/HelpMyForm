@@ -7,206 +7,1034 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#f5f0eb">
 <title>HelpMyForm</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
 <style>
-:root {
-  --bg:#f5f0eb; --bg2:#ede7df; --surface:#ffffff; --surface2:#faf7f4;
-  --border:#e0d8cf; --border2:#cfc5ba;
-  --ink:#1a1612; --ink2:#6b5f54; --ink3:#a89d94;
-  --accent:#2d6a4f; --accent-light:#e8f4ef; --accent-mid:#52b788;
-  --warm:#c9562a; --gold:#b5832a;
-  --radius:18px; --radius-sm:12px;
-  --shadow:0 2px 12px rgba(26,22,18,0.08);
-  --shadow-lg:0 8px 32px rgba(26,22,18,0.12);
-}
+  :root {
+    --bg: #f5f0eb;
+    --bg2: #ede7df;
+    --surface: #ffffff;
+    --surface2: #faf7f4;
+    --border: #e0d8cf;
+    --border2: #cfc5ba;
+    --ink: #1a1612;
+    --ink2: #6b5f54;
+    --ink3: #a89d94;
+    --accent: #2d6a4f;
+    --accent-light: #e8f4ef;
+    --accent-mid: #52b788;
+    --warm: #c9562a;
+    --warm-light: #fdf0eb;
+    --gold: #b5832a;
+    --gold-light: #fdf6e7;
+    --radius: 18px;
+    --radius-sm: 12px;
+    --shadow: 0 2px 12px rgba(26,22,18,0.08);
+    --shadow-lg: 0 8px 32px rgba(26,22,18,0.12);
+  }
 
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-html,body{
-  height:100%;background:var(--bg);color:var(--ink);
-  font-family:'Instrument Sans',sans-serif;font-size:16px;
-  line-height:1.5;overflow:hidden;
-}
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
-/* SCREENS */
-.screen{
-  position:fixed;inset:0;
-  display:flex;flex-direction:column;
-  opacity:0;pointer-events:none;
-  transition:opacity .3s ease,transform .3s ease;
-  transform:translateY(10px);
-  overflow-y:auto;-webkit-overflow-scrolling:touch;
-  background:var(--bg);
-}
-.screen.active{opacity:1;pointer-events:all;transform:translateY(0);}
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow: hidden;
+  }
 
-/* BUTTONS */
-.btn-primary{
-  width:100%;padding:17px 24px;
-  background:var(--accent);border:none;
-  border-radius:var(--radius);color:#fff;
-  font-size:16px;font-weight:600;cursor:pointer;
-  transition:transform .12s,opacity .12s;
-  display:flex;align-items:center;justify-content:center;
-}
-.btn-primary:active{transform:scale(.98);opacity:.9;}
+  .screen {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px);
+    overflow-y: auto; -webkit-overflow-scrolling: touch;
+    background: var(--bg);
+  }
+  .screen.active { opacity: 1; pointer-events: all; transform: translateY(0); }
 
-.btn-secondary{
-  width:100%;padding:15px 24px;
-  background:var(--surface);
-  border:1.5px solid var(--border);
-  border-radius:var(--radius);
-  color:var(--ink2);font-size:15px;font-weight:500;
-  margin-top:10px;cursor:pointer;
-}
-.btn-secondary:active{border-color:var(--accent);color:var(--accent);}
+  .btn-primary {
+    width: 100%; padding: 17px 24px;
+    background: var(--accent); border: none;
+    border-radius: var(--radius); color: #fff;
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 16px; font-weight: 600; cursor: pointer;
+    transition: transform 0.12s, opacity 0.12s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn-primary:active { transform: scale(0.98); opacity: 0.9; }
 
-/* HOME */
-#screen-home{justify-content:space-between;overflow:hidden;}
-.home-top{
-  flex:1;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:60px 28px 32px;position:relative;
-}
-.home-top::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--accent),var(--accent-mid),var(--gold));
-}
-.brand-icon{
-  width:72px;height:72px;background:var(--accent);
-  border-radius:20px;display:flex;align-items:center;justify-content:center;
-  margin-bottom:18px;box-shadow:0 4px 20px rgba(45,106,79,0.25);
-}
-.brand-name{
-  font-family:'Fraunces',serif;font-size:34px;font-weight:500;
-}
-.brand-name span{color:var(--accent);}
-.brand-tagline{font-size:15px;color:var(--ink2);}
+  .btn-secondary {
+    width: 100%; padding: 15px 24px;
+    background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: var(--radius); color: var(--ink2);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 15px; font-weight: 500; cursor: pointer;
+    transition: border-color 0.2s; margin-top: 10px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn-secondary:active { border-color: var(--accent); color: var(--accent); }
 
-.home-bottom{
-  padding:20px 28px 44px;background:var(--surface);
-  border-top:1px solid var(--border);
-  box-shadow:0 -4px 20px rgba(26,22,18,0.06);
-}
+  /* HOME */
+  #screen-home { justify-content: space-between; overflow: hidden; }
 
-/* FLOATING LANGUAGE PILL */
-.lang-pill{
-  position:fixed;bottom:44px;left:20px;z-index:40;
-  display:flex;align-items:center;gap:7px;
-  background:var(--surface);
-  border:1.5px solid var(--border);
-  border-radius:100px;padding:9px 14px;
-  font-size:13px;font-weight:500;color:var(--ink2);
-  cursor:pointer;box-shadow:var(--shadow);
-}
-.lang-pill:active{border-color:var(--accent);}
-.lang-pill-flag{font-size:16px;}
-.lang-pill-caret{font-size:9px;color:var(--ink3);}
+  .home-top {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 60px 28px 32px; position: relative;
+  }
+  .home-top::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-mid) 50%, var(--gold) 100%);
+  }
 
-/* SHEET */
-.lang-sheet-overlay{
-  position:fixed;inset:0;background:rgba(26,22,18,0.4);
-  backdrop-filter:blur(2px);z-index:150;
-  opacity:0;pointer-events:none;transition:opacity .25s;
-}
-.lang-sheet-overlay.open{opacity:1;pointer-events:all;}
+  .brand-lockup { text-align: center; margin-bottom: 44px; }
 
-.lang-sheet{
-  position:fixed;bottom:0;left:0;right:0;
-  background:var(--surface);
-  border-radius:24px 24px 0 0;
-  padding:12px 0 44px;z-index:151;
-  transform:translateY(100%);
-  transition:transform .3s cubic-bezier(.32,.72,0,1);
-}
-.lang-sheet.open{transform:translateY(0);}
-.lang-sheet-handle{
-  width:36px;height:4px;background:var(--border2);
-  border-radius:100px;margin:0 auto 16px;
-}
-.lang-sheet-title{
-  font-size:11px;font-weight:600;color:var(--ink3);
-  letter-spacing:1px;text-transform:uppercase;
-  padding:0 20px 12px;border-bottom:1px solid var(--border);
-}
-.lang-option{
-  display:flex;align-items:center;gap:12px;
-  padding:14px 20px;font-size:15px;
-  border-bottom:1px solid var(--border);
-  cursor:pointer;
-}
-.lang-option:last-child{border-bottom:none;}
-.lang-option.selected{color:var(--accent);}
-.lang-option.selected::after{
-  content:'✓';margin-left:auto;font-weight:700;color:var(--accent);
-}
+  .brand-icon {
+    width: 72px; height: 72px; background: var(--accent);
+    border-radius: 20px; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px; box-shadow: 0 4px 20px rgba(45,106,79,0.25);
+    cursor: pointer; position: relative; overflow: hidden;
+  }
+  .brand-icon::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+  }
+  .brand-icon svg { width: 34px; height: 34px; fill: white; position: relative; z-index: 1; }
+
+  .brand-name {
+    font-family: 'Fraunces', serif; font-size: 34px; font-weight: 500;
+    color: var(--ink); letter-spacing: -0.5px; line-height: 1; margin-bottom: 8px;
+  }
+  .brand-name span { color: var(--accent); }
+  .brand-tagline { font-size: 15px; color: var(--ink2); font-weight: 400; line-height: 1.5; }
+
+  /* LANGUAGE PILL */
+  .lang-pill {
+    position: fixed; bottom: 44px; left: 20px; z-index: 40;
+    display: flex; align-items: center; gap: 7px;
+    background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: 100px; padding: 9px 14px;
+    font-size: 13px; font-weight: 500; color: var(--ink2);
+    cursor: pointer; box-shadow: var(--shadow);
+    transition: border-color 0.2s; white-space: nowrap;
+  }
+  .lang-pill:active { border-color: var(--accent); }
+  .lang-pill-flag { font-size: 16px; line-height: 1; }
+  .lang-pill-caret { font-size: 9px; color: var(--ink3); margin-left: 2px; }
+
+  /* LANGUAGE SHEET */
+  .lang-sheet-overlay {
+    position: fixed; inset: 0; background: rgba(26,22,18,0.4);
+    backdrop-filter: blur(2px); z-index: 150;
+    opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+  }
+  .lang-sheet-overlay.open { opacity: 1; pointer-events: all; }
+  .lang-sheet {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--surface); border-radius: 24px 24px 0 0;
+    padding: 12px 0 44px; z-index: 151;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.32,0.72,0,1);
+    max-height: 75vh; display: flex; flex-direction: column;
+  }
+  .lang-sheet.open { transform: translateY(0); }
+  .lang-sheet-handle { width: 36px; height: 4px; background: var(--border2); border-radius: 100px; margin: 0 auto 16px; flex-shrink: 0; }
+  .lang-sheet-title { font-size: 11px; font-weight: 600; color: var(--ink3); letter-spacing: 1px; text-transform: uppercase; padding: 0 20px 12px; flex-shrink: 0; border-bottom: 1px solid var(--border); }
+  .lang-sheet-list { overflow-y: auto; -webkit-overflow-scrolling: touch; flex: 1; }
+  .lang-option { display: flex; align-items: center; gap: 12px; padding: 14px 20px; font-size: 15px; font-weight: 500; color: var(--ink); cursor: pointer; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  .lang-option:last-child { border-bottom: none; }
+  .lang-option:active { background: var(--accent-light); }
+  .lang-option.selected { color: var(--accent); }
+  .lang-option.selected::after { content: '✓'; margin-left: auto; font-weight: 700; color: var(--accent); }
+  .lang-option-flag { font-size: 20px; width: 28px; text-align: center; }
+
+  .home-bottom {
+    padding: 20px 28px 44px; background: var(--surface);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -4px 20px rgba(26,22,18,0.06);
+  }
+  .scan-counter { text-align: center; font-size: 12px; color: var(--ink3); margin-top: 12px; font-weight: 500; }
+  .scan-counter.warning { color: var(--warm); }
+  .scan-counter.success { color: var(--accent); font-weight: 600; }
+
+  /* SCREEN HEADER */
+  .screen-header {
+    padding: 56px 28px 22px; background: var(--surface);
+    border-bottom: 1px solid var(--border); flex-shrink: 0;
+    box-shadow: var(--shadow);
+  }
+  .screen-header h2 {
+    font-family: 'Fraunces', serif; font-size: 26px; font-weight: 500;
+    color: var(--ink); margin-bottom: 4px; letter-spacing: -0.3px;
+  }
+  .screen-header p { color: var(--ink2); font-size: 14px; line-height: 1.6; }
+
+  .screen-body { flex: 1; overflow-y: auto; padding: 24px 28px; }
+
+  /* SETUP */
+  .steps-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px; margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+  .steps-card p { font-size: 13px; color: var(--ink2); margin-bottom: 14px; font-weight: 500; }
+  .step-row { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; font-size: 14px; color: var(--ink2); }
+  .step-num { width: 22px; height: 22px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; flex-shrink: 0; margin-top: 1px; }
+  .api-link { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+  .input-group { margin-bottom: 20px; }
+  .input-label { display: block; font-size: 11px; font-weight: 600; color: var(--ink3); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .input-field {
+    width: 100%; padding: 14px 16px;
+    background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm); color: var(--ink);
+    font-family: monospace; font-size: 14px; letter-spacing: 1px;
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s; box-shadow: var(--shadow);
+  }
+  .input-field:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(45,106,79,0.1); }
+  .input-field::placeholder { color: var(--ink3); letter-spacing: 0; font-family: 'Instrument Sans', sans-serif; }
+
+  /* CAMERA */
+  #screen-camera { padding: 0; }
+  .upload-zone {
+    margin: 20px 24px 0; min-height: 210px;
+    border: 2px dashed var(--border2); border-radius: var(--radius);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; cursor: pointer; transition: border-color 0.2s, background 0.2s;
+    background: var(--surface); position: relative; overflow: hidden; box-shadow: var(--shadow);
+  }
+  .upload-zone:active { border-color: var(--accent); background: var(--accent-light); }
+  .upload-zone.has-image { border-style: solid; border-color: var(--accent); }
+  #preview-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--radius) - 2px); display: none; }
+  .upload-zone.has-image #preview-img { display: block; }
+  .upload-zone.has-image .upload-placeholder { display: none; }
+  .upload-placeholder { display: flex; flex-direction: column; align-items: center; gap: 10px; pointer-events: none; padding: 20px; }
+  .upload-icon-wrap { width: 56px; height: 56px; background: var(--accent-light); border-radius: 14px; display: flex; align-items: center; justify-content: center; }
+  .upload-icon-wrap svg { width: 26px; height: 26px; }
+  .upload-text { font-size: 15px; color: var(--ink2); text-align: center; font-weight: 500; }
+  .upload-sub { font-size: 12px; color: var(--ink3); }
+
+  .camera-btns { display: flex; gap: 10px; margin: 12px 24px 0; }
+  .camera-btn {
+    flex: 1; padding: 13px; background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm); color: var(--ink2);
+    font-family: 'Instrument Sans', sans-serif; font-size: 14px; font-weight: 500;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: var(--shadow);
+  }
+  .camera-btn:active { border-color: var(--accent); color: var(--accent); }
+  .camera-actions { padding: 14px 24px 44px; }
+
+  /* LOADING */
+  #screen-loading { justify-content: center; align-items: center; }
+  .loading-card {
+    background: var(--surface); border-radius: var(--radius); padding: 40px 32px;
+    text-align: center; margin: 24px; box-shadow: var(--shadow-lg); border: 1px solid var(--border);
+  }
+  .loading-spinner {
+    width: 44px; height: 44px; border: 3px solid var(--border);
+    border-top-color: var(--accent); border-radius: 50%;
+    margin: 0 auto 20px; animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+  .loading-sub { font-size: 13px; color: var(--ink3); }
+
+  /* WIZARD */
+  #screen-wizard { padding: 0; }
+  .wizard-header {
+    padding: 52px 24px 16px; background: var(--surface);
+    border-bottom: 1px solid var(--border); flex-shrink: 0;
+    position: sticky; top: 0; z-index: 10; box-shadow: var(--shadow);
+  }
+  .wizard-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .wizard-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-light); border: 1px solid rgba(45,106,79,0.2); border-radius: 100px; padding: 4px 12px; font-size: 12px; color: var(--accent); font-weight: 600; }
+  .wizard-step-label { font-size: 12px; color: var(--ink3); font-weight: 500; }
+  .progress-track { height: 3px; background: var(--border); border-radius: 100px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-mid)); border-radius: 100px; transition: width 0.5s ease; }
+  .wizard-body { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 20px 24px 200px; }
+
+  /* BUBBLE */
+  .bubble-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 20px; }
+  .avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(45,106,79,0.2); }
+  .avatar svg { width: 17px; height: 17px; fill: white; }
+  .bubble { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); border-top-left-radius: 4px; padding: 14px 16px; max-width: 88%; box-shadow: var(--shadow); }
+  .bubble-confirm-name { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; color: var(--ink); margin: 6px 0 4px; line-height: 1.3; }
+  .bubble-org { font-size: 12px; color: var(--ink3); font-weight: 500; margin-bottom: 8px; }
+  .bubble-question { font-size: 14px; color: var(--ink2); line-height: 1.5; }
+
+  .field-num-badge { display: inline-flex; align-items: center; background: var(--accent-light); border-radius: 6px; padding: 3px 8px; font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 8px; }
+  .field-name { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+  .field-explain { font-size: 14px; color: var(--ink2); line-height: 1.6; margin-bottom: 10px; }
+  .field-example { background: var(--gold-light); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 8px 12px; font-size: 13px; color: var(--gold); font-weight: 500; }
+
+  .need-item { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--ink2); line-height: 1.5; }
+  .need-item:last-child { border-bottom: none; }
+  .need-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+
+  .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); cursor: pointer; user-select: none; }
+  .check-item:last-child { border-bottom: none; }
+  .check-box { width: 22px; height: 22px; border: 2px solid var(--border2); border-radius: 6px; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; font-size: 12px; color: transparent; }
+  .check-item.checked .check-box { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .check-label { font-size: 14px; color: var(--ink); line-height: 1.5; transition: color 0.2s; }
+  .check-item.checked .check-label { color: var(--ink3); text-decoration: line-through; }
+
+  /* CHAT BUBBLE */
+  .chat-bubble-btn {
+    position: fixed;
+    bottom: 210px;
+    right: 20px;
+    width: 52px; height: 52px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 50;
+    box-shadow: 0 4px 16px rgba(45,106,79,0.35);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .chat-bubble-btn.visible { display: flex; }
+  .chat-bubble-btn:active { transform: scale(0.92); }
+
+  .chat-bubble-panel {
+    position: fixed;
+    bottom: 270px;
+    left: 16px; right: 16px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    border: 1px solid var(--border);
+    z-index: 49;
+    display: none;
+    flex-direction: column;
+    max-height: 55vh;
+    overflow: hidden;
+    transform: translateY(12px);
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .chat-bubble-panel.open {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .chat-panel-header {
+    padding: 14px 16px 10px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink2);
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+  .chat-panel-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .chat-panel-input {
+    padding: 10px 12px 14px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    flex-shrink: 0;
+    background: #fff;
+    border-radius: 0 0 20px 20px;
+  }
+  .msg { max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 14px; line-height: 1.5; }
+  .msg-user { background: var(--accent); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+  .msg-ai { background: var(--surface); color: var(--ink); align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  .msg-thinking { background: var(--surface); color: var(--ink3); align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid var(--border); font-style: italic; font-size: 13px; }
+  .chat-input { flex: 1; padding: 10px 14px; background: var(--surface); border: 1.5px solid var(--border); border-radius: 14px; color: var(--ink); font-family: 'Instrument Sans', sans-serif; font-size: 14px; outline: none; resize: none; max-height: 80px; transition: border-color 0.2s; line-height: 1.4; }
+  .chat-input:focus { border-color: var(--accent); }
+  .chat-input::placeholder { color: var(--ink3); }
+  .chat-send { width: 40px; height: 40px; background: var(--accent); border: none; border-radius: 12px; color: #fff; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .chat-send:active { transform: scale(0.93); }
+  .chat-send:disabled { opacity: 0.4; }
+
+  .chat-unread {
+    position: absolute;
+    top: -2px; right: -2px;
+    width: 14px; height: 14px;
+    background: #e74c3c;
+    border-radius: 50%;
+    display: none;
+  }
+  .chat-unread.show { display: block; }
+
+  .sticky-bottom { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 24px 40px; background: linear-gradient(to top, var(--bg) 70%, transparent); z-index: 20; }
+
+  /* REQUEST CARD */
+  .request-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 22px 18px;
+    text-align: center;
+    margin: 0 0 20px 0;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .request-card.show { opacity: 1; transform: translateY(0); }
+  .request-card h3 {
+    margin: 0 0 6px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+  }
+  .request-card p {
+    margin: 0 0 16px;
+    font-size: 14px;
+    color: var(--ink2);
+    line-height: 1.4;
+  }
+  .request-card button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: 'Instrument Sans', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(47,111,85,0.25);
+    transition: all 0.2s ease;
+  }
+  .request-card button:active { transform: scale(0.97); }
+
+  /* TOAST */
+  .toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(16px); background: var(--ink); color: #fff; border-radius: 100px; padding: 10px 20px; font-size: 13px; font-weight: 500; opacity: 0; transition: opacity 0.3s, transform 0.3s; z-index: 100; white-space: nowrap; pointer-events: none; box-shadow: var(--shadow-lg); }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 100px; }
 </style>
 </head>
-
 <body>
 
+<div class="toast" id="toast"></div>
+
+<!-- LANG PILL -->
+<div class="lang-pill" id="langPill" onclick="openLangSheet()">
+  <span class="lang-pill-flag" id="pillFlag">🇬🇧</span>
+  <span id="pillLabel">English</span>
+  <span class="lang-pill-caret">▲</span>
+</div>
+
+<!-- LANG SHEET -->
+<div class="lang-sheet-overlay" id="langOverlay" onclick="closeLangSheet()"></div>
+<div class="lang-sheet" id="langSheet">
+  <div class="lang-sheet-handle"></div>
+  <div class="lang-sheet-title">Choose Language</div>
+  <div class="lang-sheet-list" id="langList"></div>
+</div>
+
+<!-- CUSTOM MODAL -->
+<div id="customModal" style="display:none;position:fixed;inset:0;z-index:200;align-items:flex-end;justify-content:center;background:rgba(0,0,0,0.4);backdrop-filter:blur(2px)">
+  <div style="background:#fff;border-radius:24px 24px 0 0;padding:28px 24px 44px;width:100%;max-width:480px">
+    <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:500;color:var(--ink);margin-bottom:8px" id="modalTitle"></div>
+    <div style="font-size:14px;color:var(--ink2);margin-bottom:20px" id="modalSubtitle"></div>
+    <input type="text" id="modalInput" style="width:100%;padding:14px 16px;background:var(--surface);border:1.5px solid var(--border);border-radius:14px;color:var(--ink);font-family:'Instrument Sans',sans-serif;font-size:15px;outline:none;margin-bottom:16px" placeholder="">
+    <button onclick="modalConfirm()" style="width:100%;padding:15px;background:var(--accent);border:none;border-radius:14px;color:#fff;font-family:'Instrument Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:10px">Confirm</button>
+    <button onclick="modalCancel()" style="width:100%;padding:15px;background:var(--surface);border:1.5px solid var(--border);border-radius:14px;color:var(--ink2);font-family:'Instrument Sans',sans-serif;font-size:15px;cursor:pointer">Cancel</button>
+  </div>
+</div>
+<button class="chat-bubble-btn" id="chatBubbleBtn" onclick="toggleChat()">
+  💬
+  <div class="chat-unread" id="chatUnread"></div>
+</button>
+<div class="chat-bubble-panel" id="chatBubblePanel">
+  <div class="chat-panel-header">💬 Ask anything about this form</div>
+  <div class="chat-panel-messages" id="chat-messages"></div>
+  <div class="chat-panel-input">
+    <textarea class="chat-input" id="chat-input" placeholder="e.g. What is a PPS number?" rows="1" onkeydown="chatKeydown(event)" oninput="autoResize(this)"></textarea>
+    <button class="chat-send" id="chat-send-btn" onclick="sendChat()">↑</button>
+  </div>
+</div>
+
+<!-- HOME -->
 <div class="screen active" id="screen-home">
   <div class="home-top">
-    <div class="brand-icon"></div>
-    <div class="brand-name">Help<span>MyForm</span></div>
-    <div class="brand-tagline">Understand forms instantly.</div>
+    <div class="brand-lockup">
+      <div class="brand-icon" id="app-icon" onclick="secretTap()">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 17h8v1.5H8V17zm0-3h8v1.5H8V14zm0-3h5v1.5H8V11z"/></svg>
+      </div>
+      <div class="brand-name">Help<span>My</span>Form</div>
+      <div class="brand-tagline">Scan any form.<br>Get help in your language.</div>
+    </div>
+
+    <div class="request-card" id="requestCard">
+      <h3>We're here to help you</h3>
+      <p>Snap a photo of any document and we'll guide you through it.</p>
+      <button onclick="startScan()">Scan a Form</button>
+    </div>
+
   </div>
 
   <div class="home-bottom">
-    <button class="btn-primary">Scan a Form</button>
-    <button class="btn-secondary">Upload Instead</button>
+    <div class="scan-counter" id="scan-counter"></div>
   </div>
 </div>
 
-<!-- LANGUAGE PILL -->
-<div class="lang-pill" onclick="toggleLangSheet()">
-  <span class="lang-pill-flag" id="current-lang-flag">🇺🇸</span>
-  <span id="current-lang-label">English</span>
-  <span class="lang-pill-caret">▾</span>
+<!-- CAMERA -->
+<div class="screen" id="screen-camera">
+  <div class="screen-header">
+    <h2>Scan Your Form</h2>
+    <p>Take a photo or choose from your gallery</p>
+  </div>
+  <div class="upload-zone" id="upload-zone" onclick="openGallery()">
+    <img id="preview-img" alt="Form preview">
+    <div class="upload-placeholder">
+      <div class="upload-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      </div>
+      <div class="upload-text">Tap to choose from gallery</div>
+      <div class="upload-sub">JPG or PNG · Max 10MB</div>
+    </div>
+  </div>
+  <input type="file" id="file-input-gallery" accept="image/*" onchange="handleFileSelect(event)" style="display:none">
+  <input type="file" id="file-input-camera" accept="image/*" capture="environment" onchange="handleFileSelect(event)" style="display:none">
+  <div class="camera-btns">
+    <button class="camera-btn" onclick="openCamera()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z"/><path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+      Camera
+    </button>
+    <button class="camera-btn" onclick="openGallery()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z"/></svg>
+      Gallery
+    </button>
+  </div>
+  <div class="camera-actions">
+    <button class="btn-primary" id="analyze-btn" onclick="analyzeForm()" disabled style="opacity:0.4">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      Analyse Form
+    </button>
+    <button class="btn-secondary" onclick="showScreen('screen-home')">← Back</button>
+  </div>
 </div>
 
-<!-- OVERLAY -->
-<div class="lang-sheet-overlay" id="lang-overlay" onclick="closeLangSheet()"></div>
+<!-- LOADING -->
+<div class="screen" id="screen-loading">
+  <div class="loading-card">
+    <div class="loading-spinner"></div>
+    <div class="loading-title" id="loading-text">Reading your form...</div>
+    <div class="loading-sub">Usually takes 5–10 seconds</div>
+  </div>
+</div>
 
-<!-- BOTTOM SHEET -->
-<div class="lang-sheet" id="lang-sheet">
-  <div class="lang-sheet-handle"></div>
-  <div class="lang-sheet-title">Select Language</div>
+<!-- WIZARD -->
+<div class="screen" id="screen-wizard">
+  <div class="wizard-header">
+    <div class="wizard-meta">
+      <div class="wizard-badge" id="wizard-badge">✓ Form identified</div>
+      <div class="wizard-step-label" id="wizard-step-label"></div>
+    </div>
+    <div class="progress-track" id="wizard-progress-wrap" style="display:none">
+      <div class="progress-fill" id="wizard-progress-fill" style="width:0%"></div>
+    </div>
+  </div>
+  <div class="wizard-body" id="wizard-body"></div>
+  <div class="sticky-bottom" id="wizard-bottom"></div>
+</div>
 
-  <div class="lang-option selected" onclick="setLanguage('en','🇺🇸','English',this)">
-    🇺🇸 English
-  </div>
-  <div class="lang-option" onclick="setLanguage('es','🇪🇸','Español',this)">
-    🇪🇸 Español
-  </div>
-  <div class="lang-option" onclick="setLanguage('fr','🇫🇷','Français',this)">
-    🇫🇷 Français
-  </div>
-  <div class="lang-option" onclick="setLanguage('de','🇩🇪','Deutsch',this)">
-    🇩🇪 Deutsch
-  </div>
+<!-- PAYWALL -->
+<div class="screen" id="screen-paywall">
+  <div id="paywall-content" style="display:flex;flex-direction:column;height:100%"></div>
 </div>
 
 <script>
-function toggleLangSheet(){
-  document.getElementById('lang-overlay').classList.add('open');
-  document.getElementById('lang-sheet').classList.add('open');
+const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/3cIcN63Mhceu5wi6Ag8EM00';
+const ANALYTICS_URL = 'https://script.google.com/macros/s/AKfycbyghQEEfLoJBHBaH-gUjYv9Owm7qAyooqbaAVk1D8f15BiQqdeEaZ4er3VyXBT5J3Nj/exec';
+const FREE_SCANS = 3;
+
+let currentImageBase64 = null;
+let currentImageMime = 'image/jpeg';
+let formContext = '';
+let chatHistory = [];
+let checklistItems = [];
+let wizardData = { formName:'', formOrg:'', purpose:'', beforeItems:[], fields:[], checklist:[] };
+let wizardStep = 0;
+
+const UI_STRINGS = {
+  English:    { confirm:'I can see this looks like a',isRight:'Is that right?',yes:'✓ Yes, that\'s it',no:'✗ No, try again',scanDiff:'Scan a different form',beforeStart:'Before you start, make sure you have:',haveEverything:'I have everything — let\'s go',field:'Field',of:'of',nextField:'Next →',doneChecklist:'Done — see checklist',almostDone:'Almost done!',beforeSubmit:'Tick everything off before you submit:',askAnything:'Ask anything about this form',scanAnother:'Scan Another Form',back:'← Back',issuedBy:'issued by',thinking:'thinking...',placeholder:'e.g. What is a PPS number?',pwBadge:'Free scans used',pwTitle:'Get full access',pwSub:'One payment · No subscription · Forever',pwBtn:'Unlock access ·',pwPaid:'Already paid?',pwHome:'Back to home',pwUnlimited:'Unlimited form scans',pwLanguages:'26 languages',pwQuestions:'Unlimited questions',pwChecklists:'Smart checklists' },
+  Romanian:   { confirm:'Văd că acesta arată ca',isRight:'Este corect?',yes:'✓ Da, acesta este',no:'✗ Nu, încearcă din nou',scanDiff:'Scanează alt formular',beforeStart:'Înainte să începi, asigură-te că ai:',haveEverything:'Am tot — mergem',field:'Câmp',of:'din',nextField:'Următor →',doneChecklist:'Gata — lista',almostDone:'Aproape gata!',beforeSubmit:'Bifează totul înainte de a trimite:',askAnything:'Întreabă orice',scanAnother:'Scanează alt formular',back:'← Înapoi',issuedBy:'emis de',thinking:'mă gândesc...',placeholder:'ex. Ce este numărul PPS?',pwBadge:'Scanări gratuite folosite',pwTitle:'Obține acces complet',pwSub:'O singură plată · Fără abonament · Pentru totdeauna',pwBtn:'Deblochează ·',pwPaid:'Ai plătit deja?',pwHome:'Înapoi acasă',pwUnlimited:'Scanări nelimitate',pwLanguages:'26 limbi',pwQuestions:'Întrebări nelimitate',pwChecklists:'Liste de verificare' },
+  Arabic:     { confirm:'أرى أن هذا يبدو وكأنه',isRight:'هل هذا صحيح؟',yes:'✓ نعم',no:'✗ لا',scanDiff:'مسح نموذج آخر',beforeStart:'قبل البدء تأكد من أن لديك:',haveEverything:'لدي كل شيء — لنبدأ',field:'حقل',of:'من',nextField:'التالي →',doneChecklist:'تم — القائمة',almostDone:'اكتملت تقريباً!',beforeSubmit:'تحقق من كل شيء:',askAnything:'اسأل أي شيء',scanAnother:'مسح نموذج آخر',back:'→ رجوع',issuedBy:'صادر عن',thinking:'أفكر...',placeholder:'مثال: ما هو رقم PPS؟',pwBadge:'تم استخدام المسحات المجانية',pwTitle:'احصل على وصول كامل',pwSub:'دفعة واحدة · بلا اشتراك · للأبد',pwBtn:'افتح الوصول ·',pwPaid:'هل دفعت؟',pwHome:'العودة',pwUnlimited:'مسح غير محدود',pwLanguages:'٢٦ لغة',pwQuestions:'أسئلة غير محدودة',pwChecklists:'قوائم ذكية' },
+  Polish:     { confirm:'Widzę że to wygląda jak',isRight:'Czy to prawidłowe?',yes:'✓ Tak',no:'✗ Nie',scanDiff:'Skanuj inny formularz',beforeStart:'Zanim zaczniesz upewnij się że masz:',haveEverything:'Mam wszystko — zaczynamy',field:'Pole',of:'z',nextField:'Następne →',doneChecklist:'Gotowe — lista',almostDone:'Prawie gotowe!',beforeSubmit:'Zaznacz wszystko przed wysłaniem:',askAnything:'Zapytaj o cokolwiek',scanAnother:'Skanuj inny formularz',back:'← Wstecz',issuedBy:'wydane przez',thinking:'myślę...',placeholder:'np. Co to jest numer PPS?',pwBadge:'Darmowe skany wykorzystane',pwTitle:'Uzyskaj pełny dostęp',pwSub:'Jedna płatność · Bez subskrypcji · Na zawsze',pwBtn:'Odblokuj ·',pwPaid:'Już zapłaciłeś?',pwHome:'Powrót',pwUnlimited:'Nieograniczone skany',pwLanguages:'26 języków',pwQuestions:'Nieograniczone pytania',pwChecklists:'Listy kontrolne' },
+  Spanish:    { confirm:'Veo que esto parece ser',isRight:'¿Es correcto?',yes:'✓ Sí',no:'✗ No',scanDiff:'Escanear otro formulario',beforeStart:'Antes de empezar asegúrate de tener:',haveEverything:'Tengo todo — empecemos',field:'Campo',of:'de',nextField:'Siguiente →',doneChecklist:'Listo — lista',almostDone:'¡Casi listo!',beforeSubmit:'Marca todo antes de enviar:',askAnything:'Pregunta lo que quieras',scanAnother:'Escanear otro formulario',back:'← Atrás',issuedBy:'emitido por',thinking:'pensando...',placeholder:'ej. ¿Qué es un número PPS?',pwBadge:'Escaneos gratuitos usados',pwTitle:'Obtener acceso completo',pwSub:'Un pago · Sin suscripción · Para siempre',pwBtn:'Desbloquear ·',pwPaid:'¿Ya pagaste?',pwHome:'Volver',pwUnlimited:'Escaneos ilimitados',pwLanguages:'26 idiomas',pwQuestions:'Preguntas ilimitadas',pwChecklists:'Listas inteligentes' },
+  Portuguese: { confirm:'Vejo que isso parece ser',isRight:'Está correto?',yes:'✓ Sim',no:'✗ Não',scanDiff:'Escanear outro formulário',beforeStart:'Antes de começar certifique-se de ter:',haveEverything:'Tenho tudo — vamos',field:'Campo',of:'de',nextField:'Próximo →',doneChecklist:'Pronto — lista',almostDone:'Quase pronto!',beforeSubmit:'Marque tudo antes de enviar:',askAnything:'Pergunte o que quiser',scanAnother:'Escanear outro formulário',back:'← Voltar',issuedBy:'emitido por',thinking:'pensando...',placeholder:'ex. O que é um número PPS?',pwBadge:'Digitalizações gratuitas usadas',pwTitle:'Obter acesso completo',pwSub:'Um pagamento · Sem assinatura · Para sempre',pwBtn:'Desbloquear ·',pwPaid:'Já pagou?',pwHome:'Voltar',pwUnlimited:'Digitalizações ilimitadas',pwLanguages:'26 idiomas',pwQuestions:'Perguntas ilimitadas',pwChecklists:'Listas inteligentes' },
+};
+
+function t(key) {
+  const lang = getSelectedLanguage();
+  const s = UI_STRINGS[lang] || UI_STRINGS['English'];
+  return s[key] || UI_STRINGS['English'][key] || key;
 }
-function closeLangSheet(){
-  document.getElementById('lang-overlay').classList.remove('open');
-  document.getElementById('lang-sheet').classList.remove('open');
+
+function logScan(aiText, language) {
+  try {
+    const m = aiText.match(/FORM_NAME:\s*(.+)/);
+    fetch(ANALYTICS_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ formName: m ? m[1].trim() : 'Unknown', language, country: navigator.language || 'unknown' }) });
+  } catch(e) {}
 }
-function setLanguage(code,flag,label,el){
-  document.getElementById('current-lang-flag').textContent=flag;
-  document.getElementById('current-lang-label').textContent=label;
-  document.querySelectorAll('.lang-option').forEach(o=>o.classList.remove('selected'));
-  el.classList.add('selected');
+
+let secretTapCount = 0, secretTapTimer = null;
+function secretTap() {
+  secretTapCount++;
+  clearTimeout(secretTapTimer);
+  if (secretTapCount >= 5) {
+    secretTapCount = 0;
+    if (confirm(`🛠 DEV MODE\nScans: ${getScansUsed()}/3 · Paid: ${isPaid()}\n\nOK = reset`)) {
+      localStorage.removeItem('fg_scans_used');
+      localStorage.removeItem('fg_paid');
+      updateScanCounter();
+      showToast('✓ Reset to 3 free scans');
+    }
+    return;
+  }
+  secretTapTimer = setTimeout(() => { secretTapCount = 0; }, 2000);
+  if (secretTapCount >= 2) showToast(`${5 - secretTapCount} more...`);
+}
+
+function isPaid() { return localStorage.getItem('fg_paid') === 'true'; }
+function getScansUsed() { return parseInt(localStorage.getItem('fg_scans_used') || '0'); }
+function incrementScans() { localStorage.setItem('fg_scans_used', getScansUsed() + 1); }
+function checkPaywall() { return !isPaid() && getScansUsed() >= FREE_SCANS; }
+
+function updateScanCounter() {
+  const el = document.getElementById('scan-counter');
+  if (!el) return;
+  if (isPaid()) { el.textContent = '✓ Unlimited scans unlocked'; el.className = 'scan-counter success'; }
+  else { const r = Math.max(0, FREE_SCANS - getScansUsed()); el.textContent = `${r} free scan${r !== 1 ? 's' : ''} remaining`; el.className = r <= 1 ? 'scan-counter warning' : 'scan-counter'; }
+}
+
+function renderPaywall() {
+  document.getElementById('paywall-content').innerHTML = `
+    <div style="padding:52px 28px 24px;background:var(--surface);border-bottom:1px solid var(--border);text-align:center;flex-shrink:0">
+      <div style="display:inline-block;background:var(--accent-light);border:1px solid rgba(45,106,79,0.2);border-radius:100px;padding:4px 14px;font-size:11px;color:var(--accent);letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:18px">${t('pwBadge')}</div>
+      <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:500;color:var(--ink);margin-bottom:6px;letter-spacing:-0.3px">${t('pwTitle')}</div>
+      <div style="font-size:13px;color:var(--ink3);line-height:1.6">${t('pwSub')}</div>
+    </div>
+    <div style="padding:20px 24px;flex:1">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        ${[['📋',t('pwUnlimited')],['🌍',t('pwLanguages')],['💬',t('pwQuestions')],['✓',t('pwChecklists')]].map(([icon,label])=>`
+          <div style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--surface);border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)">
+            <span style="font-size:17px;width:26px;text-align:center">${icon}</span>
+            <span style="font-size:14px;color:var(--ink2);font-weight:500">${label}</span>
+            <span style="margin-left:auto;color:var(--accent);font-weight:700">✓</span>
+          </div>`).join('')}
+      </div>
+    </div>
+    <div style="padding:16px 24px 44px;border-top:1px solid var(--border);background:var(--surface);flex-shrink:0">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--accent-light);border-radius:12px;margin-bottom:14px;border:1px solid rgba(45,106,79,0.15)">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink)">Full access</div>
+          <div style="font-size:12px;color:var(--ink3);margin-top:1px">One-time · No renewal ever</div>
+        </div>
+        <div style="font-family:'Fraunces',serif;font-size:28px;font-weight:500;color:var(--accent)">€4.99</div>
+      </div>
+      <button onclick="goToPayment()" style="width:100%;padding:16px;background:var(--accent);border:none;border-radius:var(--radius);color:#fff;font-family:'Instrument Sans',sans-serif;font-size:16px;font-weight:600;cursor:pointer;margin-bottom:12px">${t('pwBtn')} €4.99</button>
+      <div style="display:flex;justify-content:center;gap:20px">
+        <button onclick="restorePurchase()" style="background:none;border:none;color:var(--ink3);font-size:12px;cursor:pointer;text-decoration:underline;font-family:'Instrument Sans',sans-serif">${t('pwPaid')}</button>
+        <button onclick="showScreen('screen-home')" style="background:none;border:none;color:var(--ink3);font-size:12px;cursor:pointer;text-decoration:underline;font-family:'Instrument Sans',sans-serif">${t('pwHome')}</button>
+      </div>
+    </div>
+  `;
+}
+
+function goToPaywall() { renderPaywall(); showScreen('screen-paywall'); }
+function goToPayment() { window.open(STRIPE_PAYMENT_LINK, '_blank'); }
+function restorePurchase() {
+  const code = prompt('Enter your purchase confirmation code:');
+  if (code && code.length > 5) { localStorage.setItem('fg_paid', 'true'); showToast('✓ Purchase restored!'); setTimeout(() => showScreen('screen-home'), 800); }
+  else showToast('Invalid code. Email support@helpmyform.com');
+}
+
+const LANGUAGES = [
+  {value:'auto',label:'Auto-detect',flag:'🌐'},{value:'English',label:'English',flag:'🇬🇧'},{value:'Romanian',label:'Română',flag:'🇷🇴'},{value:'Arabic',label:'العربية',flag:'🇸🇦'},{value:'Polish',label:'Polski',flag:'🇵🇱'},{value:'Spanish',label:'Español',flag:'🇪🇸'},{value:'Portuguese',label:'Português',flag:'🇧🇷'},{value:'French',label:'Français',flag:'🇫🇷'},{value:'German',label:'Deutsch',flag:'🇩🇪'},{value:'Italian',label:'Italiano',flag:'🇮🇹'},{value:'Ukrainian',label:'Українська',flag:'🇺🇦'},{value:'Russian',label:'Русский',flag:'🇷🇺'},{value:'Hindi',label:'हिन्दी',flag:'🇮🇳'},{value:'Chinese',label:'中文',flag:'🇨🇳'},{value:'Filipino',label:'Filipino',flag:'🇵🇭'},{value:'Lithuanian',label:'Lietuvių',flag:'🇱🇹'},{value:'Latvian',label:'Latviešu',flag:'🇱🇻'},{value:'Hungarian',label:'Magyar',flag:'🇭🇺'},{value:'Czech',label:'Čeština',flag:'🇨🇿'},{value:'Slovak',label:'Slovenčina',flag:'🇸🇰'},{value:'Bulgarian',label:'Български',flag:'🇧🇬'},{value:'Croatian',label:'Hrvatski',flag:'🇭🇷'},{value:'Turkish',label:'Türkçe',flag:'🇹🇷'},{value:'Somali',label:'Soomaali',flag:'🇸🇴'},{value:'Swahili',label:'Swahili',flag:'🇰🇪'},{value:'Yoruba',label:'Yoruba',flag:'🇳🇬'},{value:'Amharic',label:'አማርኛ',flag:'🇪🇹'},
+];
+function openLangSheet() {
+  const cur = localStorage.getItem('fg_language') || 'auto';
+  document.getElementById('langList').innerHTML = LANGUAGES.map(l=>`<div class="lang-option ${l.value===cur?'selected':''}" onclick="selectLang('${l.value}')"><span class="lang-option-flag">${l.flag}</span><span>${l.label}</span></div>`).join('');
+  document.getElementById('langOverlay').classList.add('open');
+  document.getElementById('langSheet').classList.add('open');
+}
+function closeLangSheet() {
+  document.getElementById('langOverlay').classList.remove('open');
+  document.getElementById('langSheet').classList.remove('open');
+}
+function selectLang(val) {
+  localStorage.setItem('fg_language', val);
+  const lang = LANGUAGES.find(l=>l.value===val)||LANGUAGES[0];
+  document.getElementById('pillFlag').textContent = lang.flag;
+  document.getElementById('pillLabel').textContent = lang.label;
   closeLangSheet();
-  localStorage.setItem('appLanguage',code);
+}
+function initPill() {
+  const val = localStorage.getItem('fg_language')||'auto';
+  const lang = LANGUAGES.find(l=>l.value===val)||LANGUAGES[0];
+  document.getElementById('pillFlag').textContent = lang.flag;
+  document.getElementById('pillLabel').textContent = lang.label;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const p = new URLSearchParams(window.location.search);
+  if (p.get('payment') === 'success') { localStorage.setItem('fg_paid', 'true'); showToast('🎉 Unlocked! Unlimited scans.'); window.history.replaceState({}, document.title, window.location.pathname); }
+  initPill();
+  updateScanCounter();
+  setTimeout(() => { const c = document.getElementById('requestCard'); if (c) c.classList.add('show'); }, 200);
+});
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const s = document.getElementById(id);
+  s.classList.add('active');
+  s.scrollTop = 0;
+  // hide chat bubble unless on wizard
+  const btn = document.getElementById('chatBubbleBtn');
+  const panel = document.getElementById('chatBubblePanel');
+  if (id !== 'screen-wizard') {
+    if (btn) btn.classList.remove('visible');
+    if (panel) { panel.classList.remove('open'); panel.style.display = 'none'; }
+  }
+}
+
+function startScan() {
+  currentImageBase64 = null;
+  document.getElementById('upload-zone').classList.remove('has-image');
+  document.getElementById('preview-img').src = '';
+  const btn = document.getElementById('analyze-btn');
+  btn.disabled = true; btn.style.opacity = '0.4';
+  showScreen('screen-camera');
+}
+
+function scanAnother() { chatHistory = []; formContext = ''; checklistItems = []; startScan(); }
+
+function getSelectedLanguage() {
+  const s = localStorage.getItem('fg_language') || 'auto';
+  return s === 'auto' ? getLanguageName(navigator.language || 'en') : s;
+}
+function getLanguageName(code) {
+  const m = {'ro':'Romanian','ro-RO':'Romanian','en':'English','en-GB':'English','en-US':'English','en-IE':'English','es':'Spanish','fr':'French','de':'German','pl':'Polish','uk':'Ukrainian','ru':'Russian','pt':'Portuguese','it':'Italian','nl':'Dutch','ar':'Arabic','zh':'Chinese','hi':'Hindi','tr':'Turkish','hu':'Hungarian','cs':'Czech','sk':'Slovak','bg':'Bulgarian','hr':'Croatian','lt':'Lithuanian','lv':'Latvian','et':'Estonian'};
+  return m[code] || m[code.split('-')[0]] || 'English';
+}
+
+function openCamera() { document.getElementById('file-input-camera').click(); }
+function openGallery() { document.getElementById('file-input-gallery').click(); }
+
+function handleFileSelect(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  currentImageMime = file.type || 'image/jpeg';
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    currentImageBase64 = ev.target.result.split(',')[1];
+    document.getElementById('preview-img').src = ev.target.result;
+    document.getElementById('upload-zone').classList.add('has-image');
+    const btn = document.getElementById('analyze-btn');
+    btn.disabled = false; btn.style.opacity = '1';
+  };
+  reader.readAsDataURL(file);
+}
+
+async function analyzeForm() {
+  if (!currentImageBase64) { showToast('Please select an image first'); return; }
+  showScreen('screen-loading');
+  document.getElementById('loading-text').textContent = 'Reading your form...';
+  if (checkPaywall()) { goToPaywall(); return; }
+  const langName = getSelectedLanguage();
+  try {
+    document.getElementById('loading-text').textContent = 'Reading it now...';
+    const res = await fetch('/api/analyze', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ imageBase64: currentImageBase64, imageMime: currentImageMime, language: langName })
+    });
+    if (!res.ok) { const e = await res.json(); throw new Error(e.error || 'API error'); }
+    const data = await res.json();
+    const text = data.result;
+    if (!text) throw new Error('No response from AI');
+    formContext = text;
+    incrementScans(); updateScanCounter(); logScan(text, langName);
+    renderResult(text, langName);
+  } catch(err) {
+    showScreen('screen-camera');
+    showToast('Error: ' + (err.message || 'Something went wrong'));
+  }
+}
+
+function renderResult(text, langName) {
+  chatHistory = []; checklistItems = []; wizardStep = 0;
+  const nm = text.match(/FORM_NAME:\s*(.+)/);
+  const om = text.match(/FORM_ORG:\s*(.+)/);
+  const pm = text.match(/FORM_PURPOSE:\s*([\s\S]*?)(?=BEFORE_YOU_START:|FIELDS:|CHECKLIST:|$)/);
+  const bm = text.match(/BEFORE_YOU_START:\s*([\s\S]*?)(?=FIELDS:|CHECKLIST:|$)/);
+  const fm = text.match(/FIELDS:\s*([\s\S]*?)(?=CHECKLIST:|$)/);
+  const cm = text.match(/CHECKLIST:\s*([\s\S]*?)$/);
+  wizardData = {
+    formName: nm ? nm[1].trim() : 'This form',
+    formOrg:  om ? om[1].trim() : '',
+    purpose:  pm ? pm[1].trim() : '',
+    beforeItems: bm ? parseListItems(bm[1]) : [],
+    fields: fm ? fm[1].split(/---/).filter(b=>b.trim()).map((block,i)=>{
+      const f=block.match(/FIELD:\s*(.+)/), e=block.match(/EXPLAIN:\s*([\s\S]*?)(?=EXAMPLE:|$)/), x=block.match(/EXAMPLE:\s*(.+)/);
+      return { name: f?f[1].trim():`Field ${i+1}`, explain: e?e[1].trim():'', example: x?x[1].trim():'' };
+    }) : [],
+    checklist: cm ? parseListItems(cm[1]) : []
+  };
+  checklistItems = wizardData.checklist;
+  showWizardStep(0);
+  showScreen('screen-wizard');
+}
+
+const AVATAR_SVG = `<svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>`;
+
+function showWizardStep(step) {
+  wizardStep = step;
+  const body = document.getElementById('wizard-body');
+  const bottom = document.getElementById('wizard-bottom');
+  const badge = document.getElementById('wizard-badge');
+  const progWrap = document.getElementById('wizard-progress-wrap');
+  const progFill = document.getElementById('wizard-progress-fill');
+  document.getElementById('screen-wizard').scrollTop = 0;
+
+  if (step === 0) {
+    badge.textContent = '🔍 Is this your form?';
+    progWrap.style.display = 'none';
+    body.innerHTML = `
+      <div class="bubble-row">
+        <div class="avatar">${AVATAR_SVG}</div>
+        <div class="bubble">
+          <div class="bubble-question">${t('confirm')}</div>
+          <div class="bubble-confirm-name">${escHtml(wizardData.formName)}</div>
+          ${wizardData.formOrg ? `<div class="bubble-org">${t('issuedBy')} ${escHtml(wizardData.formOrg)}</div>` : ''}
+          <div class="bubble-question">${t('isRight')}</div>
+        </div>
+      </div>
+      ${renderChatBox()}`;
+    bottom.innerHTML = `
+      <div style="display:flex;gap:10px;margin-bottom:10px">
+        <button onclick="wizardConfirmYes()" style="flex:1;padding:15px;background:var(--accent);border:none;border-radius:var(--radius);color:#fff;font-family:'Instrument Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer">${t('yes')}</button>
+        <button onclick="wizardConfirmNo()" style="flex:1;padding:15px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);color:var(--ink2);font-family:'Instrument Sans',sans-serif;font-size:15px;cursor:pointer">${t('no')}</button>
+      </div>
+      <button class="btn-secondary" onclick="scanAnother()" style="background:var(--surface)">${t('scanDiff')}</button>`;
+    initChat(); return;
+  }
+
+  if (step === 1) {
+    badge.textContent = '📋 What you need';
+    progWrap.style.display = 'block'; progFill.style.width = '10%';
+    const items = wizardData.beforeItems.length > 0 ? wizardData.beforeItems : ['Your personal details','Photo ID','Any relevant documents'];
+    body.innerHTML = `
+      <div class="bubble-row">
+        <div class="avatar">${AVATAR_SVG}</div>
+        <div class="bubble" style="max-width:93%">
+          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:12px">${t('beforeStart')}</div>
+          ${items.map(i=>`<div class="need-item"><div class="need-dot"></div><span>${escHtml(i)}</span></div>`).join('')}
+        </div>
+      </div>
+      ${renderChatBox()}`;
+    bottom.innerHTML = `
+      <button class="btn-primary" onclick="showWizardStep(2)">${t('haveEverything')}</button>
+      <button class="btn-secondary" onclick="showWizardStep(0)" style="background:var(--surface)">${t('back')}</button>`;
+    initChat(); return;
+  }
+
+  const fi = step - 2;
+  if (fi >= 0 && fi < wizardData.fields.length) {
+    const field = wizardData.fields[fi];
+    const fn = fi + 1, total = wizardData.fields.length;
+    badge.textContent = `📝 ${t('field')} ${fn} ${t('of')} ${total}`;
+    progWrap.style.display = 'block';
+    progFill.style.width = (Math.round((fn/(total+1))*80)+10) + '%';
+    body.innerHTML = `
+      <div class="bubble-row">
+        <div class="avatar">${AVATAR_SVG}</div>
+        <div class="bubble" style="max-width:93%">
+          <div class="field-num-badge">Field ${fn}</div>
+          <div class="field-name">${escHtml(field.name)}</div>
+          ${field.explain ? `<div class="field-explain">${escHtml(field.explain)}</div>` : ''}
+          ${field.example && field.example !== 'N/A' ? `<div class="field-example">e.g. ${escHtml(field.example)}</div>` : ''}
+        </div>
+      </div>
+      ${renderChatBox()}`;
+    const isLast = fi === wizardData.fields.length - 1;
+    bottom.innerHTML = `
+      <button class="btn-primary" onclick="showWizardStep(${step+1})">${isLast ? t('doneChecklist') : t('nextField')}</button>
+      <button class="btn-secondary" onclick="showWizardStep(${step-1})" style="background:var(--surface)">${t('back')}</button>`;
+    initChat(); return;
+  }
+
+  badge.textContent = t('almostDone');
+  progWrap.style.display = 'block'; progFill.style.width = '100%';
+  body.innerHTML = `
+    <div class="bubble-row">
+      <div class="avatar">${AVATAR_SVG}</div>
+      <div class="bubble" style="max-width:93%">
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:12px">${t('beforeSubmit')}</div>
+        <div id="wizard-checklist">
+          ${wizardData.checklist.map((item,i)=>`<div class="check-item" onclick="toggleCheck(this,${i})"><div class="check-box">✓</div><div class="check-label">${escHtml(item)}</div></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    ${renderChatBox()}`;
+  bottom.innerHTML = `
+    <button class="btn-primary" onclick="scanAnother()">${t('scanAnother')}</button>
+    <button class="btn-secondary" onclick="showWizardStep(${step-1})" style="background:var(--surface)">${t('back')}</button>`;
+  initChat();
+}
+
+function wizardConfirmYes() { showWizardStep(1); }
+function wizardConfirmNo() {
+  showModal(
+    'We can\'t tell from the photo',
+    'Please tell us what this form is about',
+    'e.g. HAP, Medical Card, PPS...',
+    (val) => { if (val && val.trim().length >= 2) { wizardData.formName = val.trim(); showWizardStep(1); } }
+  );
+}
+
+let modalCallback = null;
+function showModal(title, subtitle, placeholder, callback) {
+  modalCallback = callback;
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalSubtitle').textContent = subtitle;
+  document.getElementById('modalInput').placeholder = placeholder;
+  document.getElementById('modalInput').value = '';
+  const m = document.getElementById('customModal');
+  m.style.display = 'flex';
+  setTimeout(() => document.getElementById('modalInput').focus(), 100);
+}
+function modalConfirm() {
+  const val = document.getElementById('modalInput').value.trim();
+  document.getElementById('customModal').style.display = 'none';
+  if (modalCallback) modalCallback(val);
+}
+function modalCancel() {
+  document.getElementById('customModal').style.display = 'none';
+}
+
+function renderChatBox() {
+  // Chat is now in the floating bubble — nothing inline
+  return '';
+}
+
+function initChat() {
+  // Show the bubble when on wizard screen
+  const btn = document.getElementById('chatBubbleBtn');
+  if (btn) btn.classList.add('visible');
+  const c = document.getElementById('chat-messages');
+  if (c && chatHistory.length > 0) renderChatMessages();
+}
+
+function toggleChat() {
+  const panel = document.getElementById('chatBubblePanel');
+  const isOpen = panel.classList.contains('open');
+  if (isOpen) {
+    panel.classList.remove('open');
+    setTimeout(() => panel.style.display = 'none', 250);
+  } else {
+    panel.style.display = 'flex';
+    setTimeout(() => panel.classList.add('open'), 10);
+    document.getElementById('chatUnread').classList.remove('show');
+    // scroll messages to bottom
+    const c = document.getElementById('chat-messages');
+    if (c) setTimeout(() => c.scrollTop = c.scrollHeight, 100);
+  }
+}
+
+async function sendChat() {
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = ''; input.style.height = 'auto';
+  document.getElementById('chat-send-btn').disabled = true;
+  chatHistory.push({role:'user',text:msg});
+  renderChatMessages(); addThinkingIndicator();
+  const langName = getSelectedLanguage();
+  try {
+    const res = await fetch('/api/chat', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ message: msg, formContext: formContext, chatHistory: chatHistory, language: langName })
+    });
+    removeThinkingIndicator();
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+    chatHistory.push({role:'ai',text: data.reply || 'Sorry, I could not answer that.'});
+    renderChatMessages();
+  } catch(e) {
+    removeThinkingIndicator();
+    chatHistory.push({role:'ai',text:'Sorry, something went wrong.'});
+    renderChatMessages();
+  } finally { document.getElementById('chat-send-btn').disabled = false; }
+}
+
+function renderChatMessages() {
+  const c = document.getElementById('chat-messages');
+  if (!c) return;
+  c.innerHTML = chatHistory.map(m=>`<div class="msg msg-${m.role==='user'?'user':'ai'}">${escHtml(m.text)}</div>`).join('');
+  const panel = document.getElementById('chatBubblePanel');
+  const isOpen = panel && panel.classList.contains('open');
+  if (isOpen) {
+    setTimeout(() => c.scrollTop = c.scrollHeight, 50);
+  } else {
+    // show unread dot if new AI message
+    const last = chatHistory[chatHistory.length - 1];
+    if (last && last.role === 'ai') document.getElementById('chatUnread').classList.add('show');
+  }
+}
+
+function addThinkingIndicator() {
+  const c = document.getElementById('chat-messages');
+  if (!c) return;
+  const el = document.createElement('div');
+  el.className = 'msg msg-thinking'; el.id = 'thinking-indicator';
+  el.textContent = t('thinking');
+  c.appendChild(el);
+  setTimeout(() => c.scrollTop = c.scrollHeight, 50);
+}
+function removeThinkingIndicator() { const el = document.getElementById('thinking-indicator'); if (el) el.remove(); }
+
+function chatKeydown(e) { if (e.key==='Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); } }
+function autoResize(el) { el.style.height='auto'; el.style.height=Math.min(el.scrollHeight,100)+'px'; }
+
+function toggleCheck(el, idx) {
+  el.classList.toggle('checked');
+  const total = checklistItems.length;
+  const checked = document.querySelectorAll('.check-item.checked').length;
+  if (checked === total && total > 0) setTimeout(()=>showToast('🎉 All done! Walk in with confidence.'),200);
+}
+
+function parseListItems(text) {
+  return text.split('\n').map(l=>l.replace(/^[-•*]\s*/,'').trim()).filter(l=>l.length>0);
+}
+
+function escHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+}
+
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'), 3000);
 }
 </script>
-
 </body>
 </html>
