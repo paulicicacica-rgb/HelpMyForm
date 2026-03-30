@@ -12,8 +12,8 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'HelpMyForm <onboarding@resend.dev>',
-        to: ['support@helpmyform.com'],
+        from: 'HelpMyForm <hello@helpmyform.com>',
+        to: ['ppaulicica97104@gmail.com'],
         reply_to: email,
         subject: `HelpMyForm contact: ${name}`,
         text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
