@@ -63,7 +63,7 @@ CHECKLIST:
 - [checklist item 2]
 ...`;
 
-  try {
+  const callGemini = async () => {
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
       {
@@ -73,25 +73,48 @@ CHECKLIST:
           contents: [{
             parts: [
               { text: prompt },
-              {
-                inline_data: {
-                  mime_type: imageMime,
-                  data: imageBase64
-                }
-              }
+              { inline_data: { mime_type: imageMime, data: imageBase64 } }
             ]
           }],
-          generationConfig: {
-            temperature: 0.3,
-            maxOutputTokens: 4096
-          }
+          generationConfig: { temperature: 0.3, maxOutputTokens: 4096 }
         })
       }
     );
+    return response;
+  };
+
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+  const MAX_RETRIES = 3;
+  const RETRY_DELAY = 3000;
+
+  try {
+    let response;
+    let lastError;
+
+    for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+      response = await callGemini();
+
+      if (response.ok) break;
+
+      const err = await response.json();
+      lastError = err.error?.message || 'Gemini API error';
+      const status = response.status;
+
+      // Only retry on busy/overload errors (429, 503)
+      if (status === 429 || status === 503) {
+        if (attempt < MAX_RETRIES) {
+          await sleep(RETRY_DELAY);
+          continue;
+        }
+      }
+
+      // For other errors don't retry
+      return res.status(502).json({ error: lastError });
+    }
 
     if (!response.ok) {
-      const err = await response.json();
-      return res.status(502).json({ error: err.error?.message || 'Gemini API error' });
+      return res.status(502).json({ error: lastError || 'Gemini API error' });
     }
 
     const data = await response.json();
@@ -105,4 +128,3 @@ CHECKLIST:
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
-
