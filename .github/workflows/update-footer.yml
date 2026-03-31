@@ -1,1 +1,29 @@
+name: Update Footer
 
+on:
+  workflow_dispatch:
+
+jobs:
+  update-footer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install glob
+        run: npm install glob
+
+      - name: Run footer script
+        run: node fix-footer.js
+
+      - name: Commit changes
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add -A
+          git commit -m "Update footer on all pages" || echo "Nothing to commit"
+          git push
