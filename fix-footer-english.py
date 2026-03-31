@@ -13,6 +13,14 @@ old_footers = [
 <a href="https://helpmyform.com/hap">HAP Form</a>
 <a href="https://helpmyform.com/medical-card">Medical Card</a>
 <a href="https://helpmyform.com/irp">IRP Renewal</a>
+</div>''',
+    '''<div class="footer-links">
+<a href="https://helpmyform.com">Home</a>
+<a href="https://helpmyform.com/pps">PPS Number</a>
+<a href="https://helpmyform.com/hap">HAP Form</a>
+<a href="https://helpmyform.com/medical-card">Medical Card</a>
+<a href="https://helpmyform.com/irp">IRP Renewal</a>
+<a href="https://helpmyform.com/jobseeker">Jobseeker</a>
 </div>'''
 ]
 
@@ -39,7 +47,9 @@ for filepath in files:
             if old in content:
                 content = content.replace(old, new_footer)
                 matched = True
-                break
+
+        # Fix duplicate footer
+        content = re.sub(r'(</footer>)\s*<footer>[\s\S]*?</footer>', r'\1', content)
 
         if matched:
             with open(filepath, 'w', encoding='utf-8') as f:
@@ -47,7 +57,9 @@ for filepath in files:
             print(f'✅ Updated: {filepath}')
             updated += 1
         else:
-            print(f'⚠️ No match: {filepath}')
+            with open(filepath, 'w', encoding='utf-8') as f:
+                f.write(content)
+            print(f'⚠️ Footer already updated, fixed duplicates: {filepath}')
     except FileNotFoundError:
         print(f'❌ Not found: {filepath}')
 
