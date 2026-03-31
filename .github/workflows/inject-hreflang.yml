@@ -1,8 +1,7 @@
 name: Inject Hreflang Tags
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   inject-hreflang:
