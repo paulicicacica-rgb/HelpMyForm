@@ -1,4 +1,4 @@
-name: Inject Hreflang Tags
+name: Inject Hreflang Tags 
 
 on:
   push:
