@@ -814,9 +814,24 @@ function renderPaywall() {
 function goToPaywall() { renderPaywall(); showScreen('screen-paywall'); }
 function goToPayment() { window.open(STRIPE_PAYMENT_LINK, '_blank'); }
 function restorePurchase() {
-  const code = prompt('Enter your purchase confirmation code:');
-  if (code && code.length > 5) { localStorage.setItem('fg_paid', 'true'); showToast('✓ Purchase restored!'); setTimeout(() => showScreen('screen-home'), 800); }
-  else showToast('Invalid code. Email support@helpmyform.com');
+  const code = prompt('Enter your access code or purchase confirmation:');
+  if (!code || code.length < 4) { showToast('Invalid code. Email support@helpmyform.com'); return; }
+  
+  const NGO_CODES = ['MRCI2026', 'CROSSCARE2026', 'NASC2026', 'DORAS2026', 'ICI2026'];
+  
+  if (NGO_CODES.includes(code.toUpperCase())) {
+    localStorage.setItem('fg_paid', 'true');
+    localStorage.setItem('fg_access_type', 'ngo');
+    showToast('✓ Free access unlocked!');
+    setTimeout(() => showScreen('screen-home'), 800);
+  } else if (code.length > 5) {
+    localStorage.setItem('fg_paid', 'true');
+    localStorage.setItem('fg_access_type', 'paid');
+    showToast('✓ Purchase restored!');
+    setTimeout(() => showScreen('screen-home'), 800);
+  } else {
+    showToast('Invalid code. Email support@helpmyform.com');
+  }
 }
 
 const LANGUAGES = [
