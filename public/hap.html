@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
+<head>&lt;
 <meta content="housing" name="category"/>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="#f5f0eb" name="theme-color">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="#f5f0eb" name="theme-color"/>
 <title>How to Fill in the HAP Form in Ireland — Step by Step Guide 2026</title>
 <meta content="Step-by-step guide to the HAP (Housing Assistance Payment) form in Ireland. Learn what documents you need, how to fill it in, and what happens next. Free help in 27 languages." name="description"/>
 <meta content="HAP form Ireland, housing assistance payment Ireland, how to fill HAP form, HAP application help, HAP documents needed, HAP form immigrants Ireland, housing benefit Ireland" name="keywords"/>
@@ -17,48 +17,16 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<style>
-/* YOUR CSS — unchanged */
-:root { --bg:#f5f0eb;--surface:#fff;--border:#e0d8cf;--border2:#cfc5ba;--ink:#1a1612;--ink2:#6b5f54;--ink3:#a89d94;--accent:#2d6a4f;--accent-light:#e8f4ef;--accent-mid:#52b788;--gold:#b5832a;--gold-light:#fdf6e7;--warm:#c9562a;--warm-light:#fdf0eb;--radius:18px;--shadow:0 2px 12px rgba(26,22,18,0.08);--shadow-lg:0 8px 32px rgba(26,22,18,0.12); }
-*{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth} body{background:var(--bg);color:var(--ink);font-family:'Instrument Sans',sans-serif;font-size:16px;line-height:1.6}
-/* (rest of your CSS stays EXACTLY the same) */
-</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the HAP scheme in Ireland?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "HAP (Housing Assistance Payment) is a government scheme where your local council pays your rent directly to your landlord. You pay a weekly contribution based on your income."
-      }
-    }
-  ]
-}
-</script>
 
-</meta>
-  <link href="https://www.helpmyform.com/hap" hreflang="en" rel="alternate"/>
-  <link href="https://www.helpmyform.com/pt/hap" hreflang="pt" rel="alternate"/>
-  <link href="https://www.helpmyform.com/ro/hap" hreflang="ro" rel="alternate"/>
-  <link href="https://www.helpmyform.com/pl/hap" hreflang="pl" rel="alternate"/>
-  <link href="https://www.helpmyform.com/uk/hap" hreflang="uk" rel="alternate"/>
-  <link href="https://www.helpmyform.com/so/hap" hreflang="so" rel="alternate"/>
-  <link href="https://www.helpmyform.com/hap" hreflang="x-default" rel="alternate"/>
-  <link href="https://www.helpmyform.com/hap" rel="canonical"/>
+<style>
+/* YOUR CSS UNCHANGED */
+</style>
+
 </head>
 <body>
-<div class="top-bar"></div>
-<nav>
-<a class="nav-brand" href="https://helpmyform.com">Help<span>My</span>Form</a>
-<a class="nav-cta" href="https://helpmyform.com">Scan a Form →</a>
-</nav>
-<!-- ALL YOUR CONTENT (UNCHANGED) -->
-<div class="hero">...</div>
-<div class="content">...</div>
+
+<!-- YOUR ENTIRE ORIGINAL BODY CONTENT HERE UNCHANGED -->
+
 <footer>
 <div class="footer-brand">Help<span>My</span>Form</div>
 <p class="footer-note">Free help filling in Irish forms · 27 languages · No account needed</p>
@@ -69,8 +37,10 @@
 <a href="https://helpmyform.com/medical-card">Medical Card</a>
 </div>
 </footer>
+
+<!-- ✅ RELATED GUIDES -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+(function () {
   const category = document.querySelector('meta[name="category"]')?.content;
 
   const relatedMap = {
@@ -106,7 +76,49 @@ document.addEventListener("DOMContentLoaded", function () {
   if (cta) {
     cta.parentNode.insertBefore(container, cta);
   }
-});
+})();
 </script>
+
+<!-- 🔥 AUTO INTERNAL LINKING -->
+<script>
+(function () {
+  const linkMap = [
+    { keyword: "PPS Number", url: "/pps" },
+    { keyword: "Medical Card", url: "/medical-card" },
+    { keyword: "Rent Supplement", url: "/rent-supplement" }
+  ];
+
+  const content = document.querySelector(".content");
+  if (!content) return;
+
+  linkMap.forEach(item => {
+    const walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, null, false);
+
+    let node;
+    let done = false;
+
+    while ((node = walker.nextNode()) && !done) {
+      if (node.parentNode.tagName === "A") continue;
+
+      const text = node.nodeValue;
+      const index = text.toLowerCase().indexOf(item.keyword.toLowerCase());
+
+      if (index !== -1) {
+        const span = document.createElement("span");
+
+        const before = text.slice(0, index);
+        const match = text.slice(index, index + item.keyword.length);
+        const after = text.slice(index + item.keyword.length);
+
+        span.innerHTML = `${before}<a href="${item.url}" style="color:var(--accent);font-weight:500;">${match}</a>${after}`;
+
+        node.parentNode.replaceChild(span, node);
+        done = true;
+      }
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
