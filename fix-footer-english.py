@@ -18,7 +18,7 @@ new_footer = '''<div class="footer-links">
 
 updated = 0
 
-for filepath in ['hap.html', 'pps.html', 'medical-card.html', 'irp.html', 'jobseeker.html']:
+for filepath in ['public/hap.html', 'public/pps.html', 'public/medical-card.html', 'public/irp.html', 'public/jobseeker.html']:
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
