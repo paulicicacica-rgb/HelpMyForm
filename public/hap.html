@@ -238,15 +238,15 @@
 </div>
 </div>
 <footer>
-<div class="footer-brand">Help<span>My</span>Form</div>
-<p class="footer-note">Free help filling in Irish forms · 27 languages · No account needed</p>
-<div class="footer-links">
-<a href="https://helpmyform.com">Home</a>
-<a href="https://helpmyform.com/pps">PPS Number</a>
-<a href="https://helpmyform.com/hap">HAP Form</a>
-<a href="https://helpmyform.com/medical-card">Medical Card</a>
-</div>
-</footer>&lt;<script>
+  <div class="footer-brand">Help<span>My</span>Form</div>
+  <p class="footer-note">Free help filling in Irish forms · 27 languages · No account needed</p>
+  <div class="footer-links">
+    <a href="https://helpmyform.com">Home</a>
+    <a href="https://helpmyform.com/pps">PPS Number</a>
+    <a href="https://helpmyform.com/hap">HAP Form</a>
+    <a href="https://helpmyform.com/medical-card">Medical Card</a>
+  </div>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
   const category = document.querySelector('meta[name="category"]')?.content;
 
@@ -285,16 +285,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 </script>
-
-      `).join("")}
-    
-  `;
-
-  const cta = document.querySelector(".bottom-cta");
-  if (cta) {
-    cta.parentNode.insertBefore(container, cta);
-  }
-})();
 
 </body>
 </html>
