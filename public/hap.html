@@ -245,6 +245,44 @@
 <a href="https://helpmyform.com/hap">HAP Form</a>
 <a href="https://helpmyform.com/medical-card">Medical Card</a>
 </div>
-</footer>
+</footer><script>
+(function () {
+  const category = document.querySelector('meta[name="category"]')?.content;
+
+  const relatedMap = {
+    housing: [
+      { title: "PPS Number Guide", url: "/pps", desc: "How to apply for a PPS number in Ireland." },
+      { title: "Medical Card Guide", url: "/medical-card", desc: "Step-by-step medical card application." },
+      { title: "Rent Supplement vs HAP", url: "/rent-supplement", desc: "Understand the differences." }
+    ]
+  };
+
+  const guides = relatedMap[category] || [];
+  if (!guides.length) return;
+
+  const container = document.createElement("div");
+  container.className = "section";
+
+  container.innerHTML = `
+    <h2>Related Guides</h2>
+    <div class="docs-card">
+      ${guides.map(g => `
+        <div class="doc-item">
+          <div class="doc-dot"></div>
+          <div>
+            <strong><a href="${g.url}" style="color:inherit;text-decoration:none;">${g.title}</a></strong>
+            ${g.desc}
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+
+  const cta = document.querySelector(".bottom-cta");
+  if (cta) {
+    cta.parentNode.insertBefore(container, cta);
+  }
+})();
+</script>
 </body>
 </html>
