@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://helpmyform.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://helpmyform.com/pps</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://helpmyform.com/hap</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://helpmyform.com/medical-card</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://helpmyform.com/irp</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url><loc>https://helpmyform.com/jobseeker</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <url><loc>https://helpmyform.com/ro</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/ro/pps</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/ro/hap</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/ro/medical-card</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/ro/irp</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/ro/jobseeker</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <url><loc>https://helpmyform.com/pt</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/pt/pps</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/pt/hap</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/pt/medical-card</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/pt/irp</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/pt/jobseeker</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <url><loc>https://helpmyform.com/uk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/uk/pps</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/uk/hap</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/uk/medical-card</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/uk/jobseeker</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <url><loc>https://helpmyform.com/so</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/so/pps</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/so/hap</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/so/medical-card</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/so/irp</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/so/jobseeker</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <url><loc>https://helpmyform.com/pl</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/pl/pps</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/pl/hap</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/pl/medical-card</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/pl/irp</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://helpmyform.com/pl/jobseeker</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+</urlset>
