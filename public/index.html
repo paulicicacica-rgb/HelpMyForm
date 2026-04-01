@@ -815,24 +815,26 @@ function goToPaywall() { renderPaywall(); showScreen('screen-paywall'); }
 function goToPayment() { window.open(STRIPE_PAYMENT_LINK, '_blank'); }
 function restorePurchase() {
   const code = prompt('Enter your access code or purchase confirmation:');
-if (code && (code.toUpperCase() === 'HMF2026' || code.length > 5)) {  
-  const NGO_CODES = ['MRCI2026', 'CROSSCARE2026', 'NASC2026', 'DORAS2026', 'ICI2026'];
-  
-  if (NGO_CODES.includes(code.toUpperCase())) {
-    localStorage.setItem('fg_paid', 'true');
-    localStorage.setItem('fg_access_type', 'ngo');
-    showToast('✓ Free access unlocked!');
-    setTimeout(() => showScreen('screen-home'), 800);
-  } else if (code.length > 5) {
-    localStorage.setItem('fg_paid', 'true');
-    localStorage.setItem('fg_access_type', 'paid');
-    showToast('✓ Purchase restored!');
-    setTimeout(() => showScreen('screen-home'), 800);
-  } else {
-    showToast('Invalid code. Email support@helpmyform.com');
+  if (code && (code.toUpperCase() === 'HMF2026' || code.length > 5)) {
+    const NGO_CODES = ['MRCI2026', 'CROSSCARE2026', 'NASC2026', 'DORAS2026', 'ICI2026'];
+    if (NGO_CODES.includes(code.toUpperCase())) {
+      localStorage.setItem('fg_paid', 'true');
+      localStorage.setItem('fg_access_type', 'ngo');
+      showToast('✓ Free access unlocked!');
+      setTimeout(() => showScreen('screen-home'), 800);
+    } else if (code.length > 5) {
+      localStorage.setItem('fg_paid', 'true');
+      localStorage.setItem('fg_access_type', 'paid');
+      showToast('✓ Purchase restored!');
+      setTimeout(() => showScreen('screen-home'), 800);
+    } else {
+      showToast('Invalid code. Email support@helpmyform.com');
+    }
   }
 }
+
 const LANGUAGES = [
+
   {value:'auto',label:'Auto-detect',flag:'🌐'},{value:'English',label:'English',flag:'🇬🇧'},{value:'Romanian',label:'Română',flag:'🇷🇴'},{value:'Arabic',label:'العربية',flag:'🇸🇦'},{value:'Polish',label:'Polski',flag:'🇵🇱'},{value:'Spanish',label:'Español',flag:'🇪🇸'},{value:'Portuguese',label:'Português',flag:'🇧🇷'},{value:'French',label:'Français',flag:'🇫🇷'},{value:'German',label:'Deutsch',flag:'🇩🇪'},{value:'Italian',label:'Italiano',flag:'🇮🇹'},{value:'Ukrainian',label:'Українська',flag:'🇺🇦'},{value:'Russian',label:'Русский',flag:'🇷🇺'},{value:'Hindi',label:'हिन्दी',flag:'🇮🇳'},{value:'Chinese',label:'中文',flag:'🇨🇳'},{value:'Filipino',label:'Filipino',flag:'🇵🇭'},{value:'Lithuanian',label:'Lietuvių',flag:'🇱🇹'},{value:'Latvian',label:'Latviešu',flag:'🇱🇻'},{value:'Hungarian',label:'Magyar',flag:'🇭🇺'},{value:'Czech',label:'Čeština',flag:'🇨🇿'},{value:'Slovak',label:'Slovenčina',flag:'🇸🇰'},{value:'Bulgarian',label:'Български',flag:'🇧🇬'},{value:'Croatian',label:'Hrvatski',flag:'🇭🇷'},{value:'Turkish',label:'Türkçe',flag:'🇹🇷'},{value:'Somali',label:'Soomaali',flag:'🇸🇴'},{value:'Swahili',label:'Swahili',flag:'🇰🇪'},{value:'Yoruba',label:'Yoruba',flag:'🇳🇬'},{value:'Amharic',label:'አማርኛ',flag:'🇪🇹'},
 ];
 function openLangSheet() {
