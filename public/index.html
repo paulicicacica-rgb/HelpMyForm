@@ -815,8 +815,7 @@ function goToPaywall() { renderPaywall(); showScreen('screen-paywall'); }
 function goToPayment() { window.open(STRIPE_PAYMENT_LINK, '_blank'); }
 function restorePurchase() {
   const code = prompt('Enter your access code or purchase confirmation:');
-  if (!code || code.length < 4) { showToast('Invalid code. Email support@helpmyform.com'); return; }
-  
+if (code && (code.toUpperCase() === 'HMF2026' || code.length > 5)) {  
   const NGO_CODES = ['MRCI2026', 'CROSSCARE2026', 'NASC2026', 'DORAS2026', 'ICI2026'];
   
   if (NGO_CODES.includes(code.toUpperCase())) {
