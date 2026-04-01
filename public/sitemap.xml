@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Root / English pages -->
+  <url><loc>https://www.helpmyform.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://www.helpmyform.com/about</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/privacy</loc><priority>0.5</priority></url>
+  <url><loc>https://www.helpmyform.com/pps</loc><priority>0.9</priority></url>
+  <url><loc>https://www.helpmyform.com/hap</loc><priority>0.9</priority></url>
+  <url><loc>https://www.helpmyform.com/irp</loc><priority>0.9</priority></url>
+  <url><loc>https://www.helpmyform.com/medical-card</loc><priority>0.9</priority></url>
+  <url><loc>https://www.helpmyform.com/jobseeker</loc><priority>0.9</priority></url>
+  <url><loc>https://www.helpmyform.com/temporary-protection</loc><priority>0.9</priority></url>
+
+  <!-- Language landing pages -->
+  <url><loc>https://www.helpmyform.com/pl</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/pt</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/ro</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/so</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/uk</loc><priority>0.8</priority></url>
+
+  <!-- PL (Polish) -->
+  <url><loc>https://www.helpmyform.com/pl/pps</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/pl/hap</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/pl/medical-card</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/pl/jobseeker</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/pl/driving-licence</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/pl/rent-supplement</loc><priority>0.8</priority></url>
+
+  <!-- PT (Portuguese) -->
+  <url><loc>https://www.helpmyform.com/pt/pps</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/pt/hap</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/pt/medical-card</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/pt/jobseeker</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/pt/driving-licence</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/pt/rent-supplement</loc><priority>0.8</priority></url>
+
+  <!-- RO (Romanian) -->
+  <url><loc>https://www.helpmyform.com/ro/pps</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/ro/hap</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/ro/medical-card</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/ro/jobseeker</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/ro/driving-licence</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/ro/rent-supplement</loc><priority>0.8</priority></url>
+
+  <!-- SO (Somali) -->
+  <url><loc>https://www.helpmyform.com/so/pps</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/so/hap</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/so/irp</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/so/medical-card</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/so/jobseeker</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/so/driving-licence</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/so/rent-supplement</loc><priority>0.8</priority></url>
+
+  <!-- UK (Ukrainian) -->
+  <url><loc>https://www.helpmyform.com/uk/pps</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/uk/hap</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/uk/irp</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/uk/medical-card</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/uk/jobseeker</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/uk/driving-licence</loc><priority>0.8</priority></url>
+  <url><loc>https://www.helpmyform.com/uk/rent-supplement</loc><priority>0.8</priority></url>
+
+</urlset>
