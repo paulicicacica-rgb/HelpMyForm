@@ -8,6 +8,12 @@
   },
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.helpmyform.com" }],
+      "destination": "https://helpmyform.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/:path*.html",
       "destination": "/:path*",
       "permanent": true
