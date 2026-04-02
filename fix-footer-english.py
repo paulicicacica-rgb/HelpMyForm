@@ -41,11 +41,12 @@ for filepath in files:
         with open(filepath, 'r', encoding='utf-8') as f:
     content = f.read()
 
-# REMOVE IRP LINK (global fix)
+# REMOVE IRP LINK (robust)
 content = re.sub(
-    r'<a href="https://www\.helpmyform\.com/irp">IRP</a>\s*',
+    r'<a\s+href="https://www\.helpmyform\.com/irp"[^>]*>.*?IRP.*?</a>\s*',
     '',
-    content
+    content,
+    flags=re.IGNORECASE | re.DOTALL
 )
 
 matched = False
