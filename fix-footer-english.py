@@ -29,7 +29,6 @@ new_footer = '''<div class="footer-links">
 <a href="https://www.helpmyform.com/pps">PPS Number</a>
 <a href="https://www.helpmyform.com/hap">HAP Form</a>
 <a href="https://www.helpmyform.com/medical-card">Medical Card</a>
-<a href="https://www.helpmyform.com/irp">IRP</a>
 <a href="https://www.helpmyform.com/jobseeker">Jobseeker</a>
 </div>'''
 
