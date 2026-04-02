@@ -32,32 +32,44 @@ new_footer = '''<div class="footer-links">
 <a href="https://www.helpmyform.com/jobseeker">Jobseeker</a>
 </div>'''
 
-files = ['public/hap.html', 'public/pps.html', 'public/medical-card.html', 'public/irp.html', 'public/jobseeker.html']
+files = [
+    'public/hap.html',
+    'public/pps.html',
+    'public/medical-card.html',
+    'public/irp.html',
+    'public/jobseeker.html'
+]
 
 updated = 0
 
 for filepath in files:
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
-    content = f.read()
+            content = f.read()
 
-# REMOVE IRP LINK (robust)
-content = re.sub(
-    r'<a\s+href="https://www\.helpmyform\.com/irp"[^>]*>.*?IRP.*?</a>\s*',
-    '',
-    content,
-    flags=re.IGNORECASE | re.DOTALL
-)
+        # Remove IRP links globally (robust)
+        content = re.sub(
+            r'<a\s+href="https://www\.helpmyform\.com/irp"[^>]*>.*?IRP.*?</a>\s*',
+            '',
+            content,
+            flags=re.IGNORECASE | re.DOTALL
+        )
 
-matched = False
-for old in old_footers:
-    if old in content:
-        content = content.replace(old, new_footer)
-        matched = True
+        matched = False
 
-        # Fix duplicate footer
-        content = re.sub(r'(</footer>)\s*<footer>[\s\S]*?</footer>', r'\1', content)
+        for old in old_footers:
+            if old in content:
+                content = content.replace(old, new_footer)
+                matched = True
 
+        # Fix duplicate footers if any
+        content = re.sub(
+            r'(</footer>)\s*<footer>[\s\S]*?</footer>',
+            r'\1',
+            content
+        )
+
+        # Write back if modified or matched
         if matched:
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(content)
@@ -67,6 +79,7 @@ for old in old_footers:
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(content)
             print(f'⚠️ Footer already updated, fixed duplicates: {filepath}')
+
     except FileNotFoundError:
         print(f'❌ Not found: {filepath}')
 
