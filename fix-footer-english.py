@@ -40,7 +40,12 @@ for filepath in files:
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
-
+# REMOVE IRP LINK (global fix)
+content = re.sub(
+    r'<a href="https://www\.helpmyform\.com/irp">IRP</a>\s*',
+    '',
+    content
+)
         matched = False
         for old in old_footers:
             if old in content:
