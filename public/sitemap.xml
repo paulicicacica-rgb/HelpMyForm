@@ -71,30 +71,3 @@
   <url><loc>https://helpmyform.com/uk/rent-supplement</loc><priority>0.8</priority></url>
 
 </urlset>
-  <!-- RO (Romanian) -->
-  <url><loc>https://www.helpmyform.com/ro/pps</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/ro/hap</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/ro/medical-card</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/ro/jobseeker</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/ro/driving-licence</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/ro/rent-supplement</loc><priority>0.8</priority></url>
-
-  <!-- SO (Somali) -->
-  <url><loc>https://www.helpmyform.com/so/pps</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/so/hap</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/so/irp</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/so/medical-card</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/so/jobseeker</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/so/driving-licence</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/so/rent-supplement</loc><priority>0.8</priority></url>
-
-  <!-- UK (Ukrainian) -->
-  <url><loc>https://www.helpmyform.com/uk/pps</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/uk/hap</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/uk/irp</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/uk/medical-card</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/uk/jobseeker</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/uk/driving-licence</loc><priority>0.8</priority></url>
-  <url><loc>https://www.helpmyform.com/uk/rent-supplement</loc><priority>0.8</priority></url>
-
-</urlset>
