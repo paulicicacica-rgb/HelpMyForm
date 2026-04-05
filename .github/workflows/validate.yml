@@ -1,0 +1,127 @@
+name: Validate HTML & Check Links
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:  # allows manual trigger from GitHub UI
+
+jobs:
+  validate-html:
+    name: HTML Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install html-validate
+        run: npm install -g html-validate
+
+      - name: Run HTML validation
+        run: |
+          echo "=== HTML VALIDATION REPORT ===" > html-report.txt
+          find public -name "*.html" | sort | while read file; do
+            result=$(html-validate "$file" 2>&1)
+            if [ $? -ne 0 ]; then
+              echo "❌ $file" >> html-report.txt
+              echo "$result" >> html-report.txt
+              echo "---" >> html-report.txt
+            fi
+          done
+          cat html-report.txt
+          # Fail if any errors found
+          if grep -q "❌" html-report.txt; then
+            echo "HTML validation errors found."
+            exit 1
+          else
+            echo "✅ All HTML files valid."
+          fi
+
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-validation-report
+          path: html-report.txt
+
+  check-links:
+    name: Broken Link Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install lychee link checker
+        run: |
+          curl -sL https://github.com/lycheeverse/lychee/releases/download/v0.15.1/lychee-v0.15.1-x86_64-unknown-linux-gnu.tar.gz | tar xz
+          sudo mv lychee /usr/local/bin/
+
+      - name: Check all links in HTML files
+        run: |
+          lychee \
+            --exclude "localhost" \
+            --exclude "127.0.0.1" \
+            --exclude "fonts.googleapis.com" \
+            --exclude "fonts.gstatic.com" \
+            --timeout 30 \
+            --retry-wait-time 5 \
+            --max-retries 3 \
+            --output link-report.md \
+            --format markdown \
+            "public/**/*.html" \
+            "*.html" \
+          || true  # don't fail the step, report is enough
+
+      - name: Print link report
+        if: always()
+        run: |
+          if [ -f link-report.md ]; then
+            cat link-report.md
+          else
+            echo "No link report generated."
+          fi
+
+      - name: Upload link report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: broken-link-report
+          path: link-report.md
+
+  check-sitemaps:
+    name: Sitemap Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Validate sitemap XML files
+        run: |
+          echo "=== SITEMAP VALIDATION ===" > sitemap-report.txt
+          find . -name "sitemap*.xml" | sort | while read file; do
+            if xmllint --noout "$file" 2>&1; then
+              echo "✅ $file — valid XML" >> sitemap-report.txt
+            else
+              echo "❌ $file — XML ERROR" >> sitemap-report.txt
+              xmllint --noout "$file" 2>> sitemap-report.txt
+            fi
+          done
+          cat sitemap-report.txt
+
+      - name: Upload sitemap report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitemap-validation-report
+          path: sitemap-report.txt
