@@ -19,5 +19,8 @@
 <sitemap>
   <loc>https://www.helpmyform.com/sitemap-bank-account.xml</loc>
 </sitemap>
+  <sitemap>
+  <loc>https://www.helpmyform.com/sitemap-jobseekers.xml</loc>
+</sitemap>
   
 </sitemapindex>
