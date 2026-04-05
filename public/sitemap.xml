@@ -16,5 +16,8 @@
 <sitemap><loc>https://helpmyform.com/sitemap-driving-support.xml</loc></sitemap>
 
 <sitemap><loc>https://helpmyform.com/sitemap-international.xml</loc></sitemap>
-
+<sitemap>
+  <loc>https://www.helpmyform.com/sitemap-bank-account.xml</loc>
+</sitemap>
+  
 </sitemapindex>
