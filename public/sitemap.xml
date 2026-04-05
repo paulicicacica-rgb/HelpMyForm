@@ -22,5 +22,8 @@
   <sitemap>
   <loc>https://www.helpmyform.com/sitemap-jobseekers.xml</loc>
 </sitemap>
+ <sitemap>
+  <loc>https://www.helpmyform.com/sitemap-jobseekers-benefit.xml</loc>
+</sitemap> 
   
 </sitemapindex>
