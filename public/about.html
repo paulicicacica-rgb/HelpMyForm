@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#f5f0eb" name="theme-color"/>
+<title>About HelpMyForm | Free help with Irish forms in 27 languages</title>
+<meta content="HelpMyForm is Ireland's largest free information resource for immigrants — 200+ guides across 11 topics in 7 languages. Plus a form scanner that explains any Irish government form in your language." name="description"/>
+<link href="https://helpmyform.com/about.html" rel="canonical"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap"/></noscript>
+<style>
+:root {
+  --bg:#f5f0eb;--surface:#fff;--border:#e0d8cf;--border2:#cfc5ba;
+  --ink:#1a1612;--ink2:#6b5f54;--ink3:#a89d94;
+  --accent:#2d6a4f;--accent-light:#e8f4ef;--accent-mid:#52b788;
+  --gold:#b5832a;--gold-light:#fdf6e7;
+  --radius:18px;--shadow:0 2px 12px rgba(26,22,18,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Instrument Sans',sans-serif;font-size:16px;line-height:1.6}
+.top-bar{height:4px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent-mid) 50%,var(--gold) 100%)}
+nav{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
+.nav-brand{font-family:'Fraunces',serif;font-size:22px;font-weight:500;color:var(--ink);text-decoration:none;letter-spacing:-0.3px}
+.nav-brand span{color:var(--accent)}
+.nav-cta{background:var(--accent);color:white;border-radius:100px;padding:10px 20px;font-size:14px;font-weight:600;text-decoration:none}
+.hero{padding:52px 24px 44px;max-width:720px;margin:0 auto;animation:fadeUp 0.5s ease both}
+.breadcrumb{font-size:12px;color:var(--ink3);margin-bottom:20px;display:flex;align-items:center;gap:6px}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb-sep{color:var(--border2)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);border:1px solid rgba(45,106,79,0.2);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--accent);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:20px}
+h1{font-family:'Fraunces',serif;font-size:clamp(28px,6vw,40px);font-weight:500;color:var(--ink);line-height:1.2;letter-spacing:-0.5px;margin-bottom:16px}
+h1 em{font-style:italic;color:var(--accent)}
+.hero-sub{font-size:17px;color:var(--ink2);line-height:1.6;margin-bottom:28px;max-width:560px}
+.content{max-width:720px;margin:0 auto;padding:0 24px 80px}
+.about-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px;margin-bottom:16px;box-shadow:var(--shadow)}
+.about-block p{font-size:15px;color:var(--ink2);line-height:1.8;margin-bottom:14px}
+.about-block p:last-child{margin-bottom:0}
+.about-block h2{font-family:'Fraunces',serif;font-size:20px;font-weight:500;color:var(--ink);margin-bottom:14px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
+.stat-card{background:var(--accent-light);border:1px solid rgba(45,106,79,0.15);border-radius:var(--radius);padding:20px 16px;text-align:center}
+.stat-num{font-family:'Fraunces',serif;font-size:32px;font-weight:500;color:var(--accent);line-height:1}
+.stat-label{font-size:12px;color:var(--ink2);margin-top:6px;font-weight:500}
+.topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0}
+.topic-pill{background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:8px 16px;font-size:13px;color:var(--ink2);display:flex;align-items:center;gap:8px}
+.topic-pill span{font-weight:600;color:var(--accent)}
+.lang-row{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.lang-chip{background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:13px;color:var(--ink2)}
+.ngo-box{background:var(--accent);border-radius:var(--radius);padding:28px 24px;margin:24px 0;color:white}
+.ngo-box h2{font-family:'Fraunces',serif;font-size:20px;font-weight:500;margin-bottom:10px}
+.ngo-box p{font-size:14px;opacity:0.9;line-height:1.6;margin-bottom:16px}
+.ngo-box a.btn{display:inline-block;background:white;color:var(--accent);border-radius:100px;padding:11px 24px;font-size:14px;font-weight:700;text-decoration:none}
+.contact-box{background:var(--gold-light);border:1px solid rgba(181,131,42,0.2);border-radius:var(--radius);padding:24px;margin-top:16px}
+.contact-box h3{font-family:'Fraunces',serif;font-size:18px;font-weight:500;color:var(--ink);margin-bottom:8px}
+.contact-box p{font-size:14px;color:var(--ink2);margin:0;line-height:1.6}
+.contact-box a{color:var(--gold);font-weight:600;text-decoration:none}
+footer{background:var(--surface);border-top:1px solid var(--border);padding:28px 24px;text-align:center}
+.footer-brand{font-family:'Fraunces',serif;font-size:18px;font-weight:500;color:var(--ink);margin-bottom:6px}
+.footer-brand span{color:var(--accent)}
+.footer-links{display:flex;justify-content:center;gap:20px;margin-top:12px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:var(--ink3);text-decoration:none}
+.footer-note{font-size:12px;color:var(--ink3);margin-top:8px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:520px){.stat-grid{grid-template-columns:1fr 1fr}.topic-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="top-bar"></div>
+<nav>
+  <a class="nav-brand" href="https://helpmyform.com">Help<span>My</span>Form</a>
+  <a class="nav-cta" href="/app">Scan a form →</a>
+</nav>
+
+<div class="hero">
+  <div class="breadcrumb"><a href="https://helpmyform.com">Home</a><span class="breadcrumb-sep">›</span><span>About</span></div>
+  <div class="hero-badge">About</div>
+  <h1>What is <em>HelpMyForm</em></h1>
+  <p class="hero-sub">Ireland's largest free information resource for immigrants — 200+ plain-language guides across 11 topics, in 7 languages, plus a scanner that explains any Irish government form in your language.</p>
+</div>
+
+<div class="content">
+
+  <div class="about-block">
+    <p>HelpMyForm exists because Irish government forms and services are not designed to be understood on first contact. The language is technical, the processes are opaque, and the consequences of getting something wrong — a missed document, a wrong answer — can mean weeks of delays.</p>
+    <p>We built two things to fix that: a comprehensive library of free plain-language guides covering every major Irish form and service, and a scanner app that reads any form you photograph and explains every field in your language in seconds.</p>
+    <p>Everything is free. No account required. Nothing is stored.</p>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Guide pages published</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">27</div>
+      <div class="stat-label">Languages supported</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">11</div>
+      <div class="stat-label">Topic clusters</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">€0</div>
+      <div class="stat-label">Cost for NGOs</div>
+    </div>
+  </div>
+
+  <div class="about-block">
+    <h2>The guides</h2>
+    <p>Every major Irish form and service has a full cluster — a hub page plus detailed subpages covering eligibility, application, documents, common problems, and what to do when things go wrong.</p>
+    <div class="topic-grid">
+      <div class="topic-pill">🏠 <span>HAP</span> — 21 guides</div>
+      <div class="topic-pill">🔢 <span>PPS Number</span> — 22 guides</div>
+      <div class="topic-pill">🏥 <span>Medical Card</span> — 21 guides</div>
+      <div class="topic-pill">🏘️ <span>Rent Supplement</span> — 12 guides</div>
+      <div class="topic-pill">🪪 <span>Public Services Card</span> — 16 guides</div>
+      <div class="topic-pill">🚗 <span>Driving Licence</span> — 20 guides</div>
+      <div class="topic-pill">💶 <span>Jobseeker's Allowance</span> — 14 guides</div>
+      <div class="topic-pill">📋 <span>Jobseeker's Benefit</span> — 10 guides</div>
+      <div class="topic-pill">🛂 <span>IRP</span> — 12 guides</div>
+      <div class="topic-pill">🏦 <span>Bank Account</span> — 10 guides</div>
+      <div class="topic-pill">🇺🇦 <span>Temporary Protection</span> — 11 guides</div>
+    </div>
+    <p>Full guide clusters are also available in 7 languages — written specifically for each community, not translated from English:</p>
+    <div class="lang-row">
+      <span class="lang-chip">🇷🇴 Română</span>
+      <span class="lang-chip">🇵🇱 Polski</span>
+      <span class="lang-chip">🇺🇦 Українська</span>
+      <span class="lang-chip">🇧🇷 Português BR</span>
+      <span class="lang-chip">🇸🇴 Soomaali</span>
+      <span class="lang-chip">🇪🇸 Español</span>
+      <span class="lang-chip">🇱🇹 Lietuvių</span>
+    </div>
+  </div>
+
+  <div class="about-block">
+    <h2>The scanner</h2>
+    <p>Open the app on your phone. Take a photo of any Irish government form — HAP, PPS, Medical Card, IRP, a letter from a landlord, a hospital notice, anything. Within seconds you receive a plain-language breakdown of every field: what it is asking, what to write, and an example where helpful.</p>
+    <p>You can also ask follow-up questions in your language if something is still unclear. The scanner works with any document in any format — not just the forms we have guides for.</p>
+    <p>No account is required. Nothing is stored. Your photo is analysed and immediately discarded.</p>
+  </div>
+
+  <div class="ngo-box">
+    <h2>For organisations working with immigrants</h2>
+    <p>HelpMyForm is available free of charge to NGOs, charities, community organisations and public bodies working with migrants, refugees and people with limited English. We provide dedicated access codes for your clients — no setup, no integration, no cost.</p>
+    <a class="btn" href="mailto:hello@helpmyform.com">Get in touch →</a>
+  </div>
+
+  <div class="about-block">
+    <h2>Built and maintained in Ireland</h2>
+    <p>HelpMyForm is an Irish product, built to solve an Irish problem. It is actively maintained and updated as forms change, new clusters are added, and language coverage expands.</p>
+    <p>All data handling is fully compliant with GDPR and Irish data protection law. Your photos are never stored. We collect no personal data. Full details at <a href="/privacy.html" style="color:var(--accent);font-weight:500">helpmyform.com/privacy</a>.</p>
+  </div>
+
+  <div class="contact-box">
+    <h3>Get in touch</h3>
+    <p>For partnerships, NGO access, guide corrections, or press enquiries — <a href="mailto:hello@helpmyform.com">hello@helpmyform.com</a> or visit <a href="/contact.html">helpmyform.com/contact</a>.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">Help<span>My</span>Form</div>
+  <p class="footer-note">Free help with Irish government forms · 27 languages · No account needed</p>
+  <div class="footer-links">
+    <a href="https://helpmyform.com">Home</a>
+    <a href="/hap">HAP</a>
+    <a href="/pps">PPS Number</a>
+    <a href="/medical-card">Medical Card</a>
+    <a href="/jobseekers-allowance">Jobseeker's</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy.html">Privacy</a>
+  </div>
+</footer>
+</body>
+</html>
