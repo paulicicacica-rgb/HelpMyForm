@@ -82,15 +82,16 @@ body { height: 100%; background: var(--bg); color: var(--ink); font-family: 'Ins
 /* ── HOME PILL ── */
 .home-pill {
   position: fixed; bottom: 20px; left: 20px; z-index: 150;
-  display: none; align-items: center; gap: 5px;
+  display: flex; align-items: center; gap: 5px;
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 100px; padding: 7px 12px;
   font-size: 12px; font-weight: 500; color: var(--ink2);
   cursor: pointer; box-shadow: var(--shadow);
-  transition: border-color 0.2s; white-space: nowrap;
+  transition: border-color 0.2s, opacity 0.2s; white-space: nowrap;
   -webkit-transform: translateZ(0); transform: translateZ(0);
+  opacity: 0; pointer-events: none;
 }
-.home-pill.visible { display: flex; }
+.home-pill.visible { opacity: 1; pointer-events: all; }
 .home-pill:active { border-color: var(--accent); color: var(--accent); }
 
 /* ── SCROLL BODY ── */
@@ -422,7 +423,7 @@ textarea.contact-input { resize: none; min-height: 120px; line-height: 1.5; }
 #customModal { display: none; position: fixed; inset: 0; z-index: 600; align-items: flex-end; justify-content: center; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); }
 
 /* ── PRIVACY LINK ── */
-.privacy-link { position: fixed; bottom: 22px; left: 20px; font-size: 11px; color: var(--ink3); font-weight: 500; z-index: 100; text-decoration: underline; text-decoration-style: dotted; }
+.privacy-link { display: none; }
 
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 100px; }
@@ -807,6 +808,36 @@ function initPill() {
   document.getElementById('pillLabel').textContent = lang.label;
 }
 
+// ── REFERRER: back to guide ──
+let referrerURL = null;
+let referrerLabel = '← Back';
+
+function initReferrer() {
+  try {
+    const ref = document.referrer;
+    if (ref && ref.includes('helpmyform.com') && !ref.includes('helpmyform.com/') === false) {
+      const url = new URL(ref);
+      const path = url.pathname.replace(/\/$/, '');
+      if (path && path !== '/') {
+        referrerURL = ref;
+        // Make a readable label from the path e.g. /pps → "PPS", /hap → "HAP"
+        const slug = path.split('/').filter(Boolean).pop() || '';
+        referrerLabel = '← ' + slug.toUpperCase().replace(/-/g, ' ');
+      }
+    }
+  } catch(e) {}
+  const pill = document.getElementById('homePill');
+  if (pill && referrerURL) pill.textContent = referrerLabel;
+}
+
+function goHome() {
+  if (referrerURL) {
+    window.location.href = referrerURL;
+  } else {
+    showScreen('screen-home');
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const p = new URLSearchParams(window.location.search);
   if (p.get('payment') === 'success') {
@@ -814,6 +845,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast('🎉 Unlocked! Unlimited scans.');
     window.history.replaceState({}, document.title, window.location.pathname);
   }
+  initReferrer();
   initPill();
   applyLanguage();
   updateScanCounter();
@@ -825,9 +857,12 @@ function showScreen(id) {
   s.classList.add('active');
   s.scrollTop = 0;
 
-  // Home pill: show on all screens except home and loading
+  // Home pill: hide on loading, hide on home screen UNLESS came from a guide
   const homePill = document.getElementById('homePill');
-  if (homePill) homePill.classList.toggle('visible', id !== 'screen-home' && id !== 'screen-loading');
+  if (homePill) {
+    const showPill = id !== 'screen-loading' && (id !== 'screen-home' || referrerURL);
+    homePill.classList.toggle('visible', showPill);
+  }
 
   // Chat bubble: only on wizard
   const btn = document.getElementById('chatBubbleBtn');
