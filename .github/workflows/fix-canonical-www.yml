@@ -20,6 +20,8 @@ jobs:
 
       - name: Run fix script
         run: python fix_canonical_www.py
+        - name: Fix sitemap.xml
+        run: python fix_sitemap_www.py
 
       - name: Commit and push changes
         run: |
