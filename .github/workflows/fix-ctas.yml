@@ -1,0 +1,27 @@
+name: Fix CTA Links
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fix-ctas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fix scan-box-btn links to point to /app
+        run: |
+          find public/ -name "*.html" | while read file; do
+            if grep -q 'class="scan-box-btn" href="https://helpmyform.com"' "$file"; then
+              sed -i 's|class="scan-box-btn" href="https://helpmyform.com"|class="scan-box-btn" href="https://helpmyform.com/app"|g' "$file"
+              echo "✓ Fixed: $file"
+            fi
+          done
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add public/
+          git diff --cached --quiet || git commit -m "fix: CTA buttons now point to /app"
+          git push
