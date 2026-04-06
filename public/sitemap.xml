@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- English clusters -->
-  <sitemap><loc>https://helpmyform.com/sitemap-core.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
-  <sitemap><loc>https://helpmyform.com/sitemap-hap.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
-  <sitemap><loc>https://helpmyform.com/sitemap-pps.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
-  <sitemap><loc>https://helpmyform.com/sitemap-medical-card.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
-  <sitemap><loc>https://helpmyform.com/sitemap-rent-supplement.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
-  <sitemap><loc>https://helpmyform.com/sitemap-public-services-card.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
-  <sitemap><loc>https://helpmyform.com/sitemap-driving-licence.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
-  <sitemap><loc>https://helpmyform.com/sitemap-jobseekers-allowance.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
-  <sitemap><loc>https://helpmyform.com/sitemap-jobseekers-benefit.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
-  <sitemap><loc>https://helpmyform.com/sitemap-irp.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
-  <sitemap><loc>https://helpmyform.com/sitemap-bank-account.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
-  <sitemap><loc>https://helpmyform.com/sitemap-temporary-protection.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
+  <sitemap><loc>https://www.helpmyform.com/sitemap-core.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
+  <sitemap><loc>https://www.helpmyform.com/sitemap-hap.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
+  <sitemap><loc>https://www.helpmyform.com/sitemap-pps.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
+  <sitemap><loc>https://www.helpmyform.com/sitemap-medical-card.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
+  <sitemap><loc>https://www.helpmyform.com/sitemap-rent-supplement.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
+  <sitemap><loc>https://www.helpmyform.com/sitemap-public-services-card.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
+  <sitemap><loc>https://www.helpmyform.com/sitemap-driving-licence.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
+  <sitemap><loc>https://www.helpmyform.com/sitemap-jobseekers-allowance.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
+  <sitemap><loc>https://www.helpmyform.com/sitemap-jobseekers-benefit.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
+  <sitemap><loc>https://www.helpmyform.com/sitemap-irp.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
+  <sitemap><loc>https://www.helpmyform.com/sitemap-bank-account.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
+  <sitemap><loc>https://www.helpmyform.com/sitemap-temporary-protection.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
   <!-- Language clusters -->
-  <sitemap><loc>https://helpmyform.com/sitemap-languages.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
+  <sitemap><loc>https://www.helpmyform.com/sitemap-languages.xml</loc><lastmod>2026-04-05</lastmod></sitemap>
 </sitemapindex>
