@@ -6,8 +6,7 @@ Replaces all non-www URLs in sitemap.xml with www versions.
 
 import os
 
-SITEMAP = "sitemap.xml"
-OLD = "https://helpmyform.com/"
+SITEMAP = "public/sitemap.xml"OLD = "https://helpmyform.com/"
 NEW = "https://www.helpmyform.com/"
 
 if not os.path.exists(SITEMAP):
