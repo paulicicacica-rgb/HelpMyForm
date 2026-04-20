@@ -19,8 +19,7 @@ jobs:
           python-version: '3.11'
 
       - name: Generate sitemap
-        run: python generate_sitemap.py
-
+run: python generate_sitemap_hmf.py
       - name: Commit and push sitemap
         run: |
           git config user.name "github-actions[bot]"
